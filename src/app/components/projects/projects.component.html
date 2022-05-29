@@ -1,0 +1,37 @@
+<section>
+  <div
+    class="card mat-card"
+    id="second-card">
+
+    <div class="comp-flex">
+      <h3>
+        Proyectos
+      </h3>
+      <button class="btn-nondeco"><i class="fa-solid fa-plus"></i></button>
+    </div>
+
+    <div class="projects-box">
+
+    <ul class="item-list">
+      <li *ngFor="let project of projectUser">
+        <div class="project ">
+          <div class="project-tarjet">
+            <img [src]="project.img" alt="">
+            <h6><strong>{{project.name}}</strong></h6>
+            <p>{{project.description}}</p>
+          </div>
+          <div class="button-box">
+            <button class="btn-nodeco edit-button"><i class="fa-solid fa-pencil"></i></button>
+            <button class="btn-nodeco trash-button"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+
+
+    </div>
+
+  </div>
+</section>

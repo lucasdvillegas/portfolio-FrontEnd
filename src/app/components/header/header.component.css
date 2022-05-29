@@ -1,0 +1,28 @@
+.navbar{
+  width: 100%;
+
+}
+img {
+  width:40px;
+  height:40px;
+  margin: 0px 10px;
+  border-radius: 5%;
+}
+
+a i {
+  font-size: 30px;
+  margin: 0 12px;
+  color: rgb(189, 189, 189);
+}
+
+a i:hover{
+  color: white;
+}
+form button{
+  margin: 0px 12px;
+}
+
+.d-flex {
+  display: flex!important;
+  align-items: center;
+}

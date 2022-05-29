@@ -1,0 +1,122 @@
+section{
+  border-radius: 15px;
+}
+.mat-card{
+  border: 0 black;
+  background-color: #212529;
+  border-radius: 10px ;
+  margin: 2% 10%;
+  display: flex;
+}
+
+.mat-card #second-card{
+  padding: 0;
+  border-radius: 10px 10px 10px 10px;
+}
+.comp-flex{
+  display: flex;
+  margin: 15px 15px;
+  justify-content:space-between;
+}
+
+h3, h6, p {
+  margin: 3px 0;
+  color: #FFFFFFE6;
+}
+
+.btn-nondeco {
+  background: none;
+  color: rgb(189, 189, 189);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.btn-nondeco:hover{
+  color: white;
+}
+
+/* button {
+  margin: 0 5px;
+} */
+
+.text-box {
+  color: #FFFFFFE6;
+  margin: 1% 4%;
+}
+/*Projects box*/
+
+.projects-box{
+  margin: 3% 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/*Card project*/
+
+.project{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+  text-align: center;
+  width: 225px;
+  height: 325px;
+}
+
+.project-tarjet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.project img{
+  width: 200px;
+  height: 125px;
+  border-radius: 5px;
+}
+
+/*BOTONES*/
+
+.button-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-nodeco{
+  background: none;
+  color: rgb(189, 189, 189);
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+}
+
+.btn-nodeco:hover{
+  color: white;
+}
+
+ul{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-items: center;
+}
+ul.item-list{
+  list-style: none;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+@media screen and (max-width: 650px){
+  ul.item-list {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

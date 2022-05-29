@@ -1,0 +1,91 @@
+{
+  "name": "Lucas Villegas",
+  "backImage": "../../../assets/images/User-profile-background.jpg",
+  "image": "../../../assets/images/howl.jpg",
+  "position": "Administrativo en Estudio Contable León",
+  "company":{
+    "name": "Estudio Contable León",
+    "img": "",
+    "url": ""
+  },
+  "school":{
+    "name": "Escuela Superior de Comercio",
+    "img":"",
+    "url":""
+  },
+  "ubication": "Buenos Aires, Argentina",
+  "about": "Lorem weno dolor sit amet consectetur adipisicing elit. Ab reiciendis nam, veniam alias possimus labore. Quam, delectus ratione. Architecto consectetur possimus itaque repellat tempore nam porro aut quo dolorem facere.",
+  "experience": [{
+    "position": "Administrativo",
+    "company": "Estudio Contable León",
+    "img":"",
+    "mode": "Jornada parcial",
+    "start": "febrero 2022",
+    "end": "actualidad",
+    "timeElapsed":"4 meses"
+  }],
+  "education": [{
+    "school": "Escuela Superior de Comercio",
+    "career": "Técnico Superior en Computación",
+    "start": "2020",
+    "end":"actualidad"
+
+  },
+  {
+    "school": "Argentina Programa",
+    "career": "#SeProgramar",
+    "start": "2021",
+    "end": "2021"
+
+  }],
+"skill":[{
+    "name": "HTML",
+    "progress": "85",
+    "type": "fa-brands fa-html5"
+  },
+  {
+    "name": "CSS",
+    "progress": "60",
+    "type": "fa-brands fa-css3-alt"
+  },
+  {
+    "name": "Javascript",
+    "progress": "60",
+    "type": "fa-brands fa-js"
+  },
+  {
+    "name": "Angular",
+    "progress": "50",
+    "type": "fa-brands fa-angular"
+  },
+  {
+    "name": "Java",
+    "progress": "65",
+    "type": "fa-brands fa-java"
+  },
+  {
+    "name": "Bootstrap",
+    "progress": "80",
+    "type": "fa-brands fa-bootstrap"
+  }],
+  "project":[{
+    "name":"Proyecto #YoProgramo",
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo sed id impedit eius nihil ex, doloremque veritatis quae tempora inventore..",
+    "link":"",
+    "img":"../../../assets/images/fire1.jpg"
+  },
+  {
+    "name":"Proyecto #YoProgramo",
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo sed id impedit eius nihil ex, doloremque veritatis quae tempora inventore..",
+    "link":"",
+    "img":"../../../assets/images/fire2.png"
+  },
+  {
+    "name":"Proyecto #YoProgramo",
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo sed id impedit eius nihil ex, doloremque veritatis quae tempora inventore..",
+    "link":"",
+    "img":"../../../assets/images/fire3.jpg"
+  }
+  ]
+
+}

@@ -1,0 +1,56 @@
+<section>
+  <div class="card mat-card" id="first-card">
+      <div id="profile-background" >
+        <img [src]="dataUser.backImage" alt="">
+      </div>
+      <div id="info" style="padding: 16px">
+          <div class="info-img">
+            <div class="profile-image" style="background-image: url({{dataUser.image}})"></div>
+              <button class="btn-nondeco"><i class="fa-solid fa-pencil"></i></button>
+          </div>
+          <div class="info-data">
+              <div class="personal-info">
+                  <h1>{{dataUser.name}}</h1>
+                  <div class="info-company"><h3>{{dataUser.position}}</h3></div>
+                  <div id="info-contact">
+                      <span>{{dataUser.ubication}} </span>
+                      <span><a href="#">Información de contacto</a></span>
+                  </div>
+              </div>
+              <ul id="info-details">
+                  <li>
+                      <a href="#"
+                          class="link">
+                          <i
+                            class="fa-solid fa-briefcase"
+                            id="work-logo1"></i>
+                          <h2>{{dataUser.company.name}}</h2>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#"
+                         class="link">
+                          <i
+                            class="fa-solid fa-graduation-cap"
+                            id="work-logo"></i>
+                          <h2>{{dataUser.school.name}}</h2>
+                      </a>
+                  </li>
+              </ul>
+
+          </div>
+          <div id="info-action">
+              <button
+                type="button"
+                class="btn btn-primary">Tengo interés en</button>
+              <button
+                type="button"
+                class="btn btn-light">Añadir Sección</button>
+              <button
+                type="button"
+                class="btn btn-light">Más</button>
+          </div>
+      </div>
+  </div>
+
+</section>
