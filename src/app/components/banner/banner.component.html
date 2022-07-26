@@ -1,19 +1,19 @@
 <section>
   <div class="card mat-card" id="first-card">
       <div id="profile-background" >
-        <img [src]="dataUser.backImage" alt="">
+        <img alt="" src="../../../assets/images/User-profile-background.jpg" ><!--[src]="dataUser.backImage" -->
       </div>
       <div id="info" style="padding: 16px">
           <div class="info-img">
-            <div class="profile-image" style="background-image: url({{dataUser.image}})"></div>
+            <div class="profile-image" style="background-image: url(../../../assets/images/User-profile-img.jpg);"></div> <!--style="background-image: url({{dataUser.image}})"-->
               <button class="btn-nondeco"><i class="fa-solid fa-pencil"></i></button>
           </div>
           <div class="info-data">
               <div class="personal-info">
-                  <h1>{{dataUser.name}}</h1>
-                  <div class="info-company"><h3>{{dataUser.position}}</h3></div>
+                  <h1>{{persona.nombre}} {{persona.apellido}}</h1>
+                  <div class="info-company"><h3>Fullstack Developer Jr</h3></div>
                   <div id="info-contact">
-                      <span>{{dataUser.ubication}} </span>
+                      <span>Pedro Luro, Buenos Aires </span>
                       <span><a href="#">Información de contacto</a></span>
                   </div>
               </div>
@@ -24,7 +24,7 @@
                           <i
                             class="fa-solid fa-briefcase"
                             id="work-logo1"></i>
-                          <h2>{{dataUser.company.name}}</h2>
+                          <h2>Estudio Contable León</h2>
                       </a>
                   </li>
                   <li>
@@ -33,7 +33,7 @@
                           <i
                             class="fa-solid fa-graduation-cap"
                             id="work-logo"></i>
-                          <h2>{{dataUser.school.name}}</h2>
+                          <h2>Universidad Nacional del Sur</h2>
                       </a>
                   </li>
               </ul>

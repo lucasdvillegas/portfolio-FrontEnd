@@ -4,7 +4,8 @@
     <form class="d-flex">
       <a href="#"><i class="fa-brands fa-github"></i></a>
       <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-      <button type="button" class="btn btn-outline-light">Login</button>
+      <button (click)="login()" type="button" class="btn btn-outline-light" (click)="login()" *ngIf="!isLogged">Iniciar sesión</button>
+      <button (click)="login()" type="button" class="btn btn-outline-light" (click)="onLogOut()" *ngIf="isLogged">Cerrar sesión</button>
     </form>
   </div>
 </nav>

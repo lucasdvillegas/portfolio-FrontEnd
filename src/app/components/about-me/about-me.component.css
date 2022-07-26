@@ -2,13 +2,13 @@ section{
   border-radius: 15px;
 }
 
-.mat-card{
+/* .mat-card{
   border: 0 black;
   background-color: #212529;
   border-radius: 10px ;
-  margin: 2% 10%;
+  margin: 2% 13%;
   display: flex;
-}
+} */
 
 .mat-card #second-card{
   padding: 0;
