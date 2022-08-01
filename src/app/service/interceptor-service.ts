@@ -24,7 +24,7 @@ export class InterceptorService implements HttpInterceptor {
 
 export const interceptorProvider = [{
     provide: HTTP_INTERCEPTORS,
-    useCass: InterceptorService,
+    useClass: InterceptorService,
     multi: true
 }];
 

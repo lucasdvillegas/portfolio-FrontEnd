@@ -6,6 +6,7 @@
   display: flex;
 }
 
+
 .mat-card #third-card{
   padding: 0;
   border-radius: 10px 10px 10px 10px;
@@ -17,8 +18,11 @@
   justify-content: space-between;
 }
 
-h3 {
+h3, h6, h5{
   color: #FFFFFFE6;
+}
+hr {
+  color: #212529;
 }
 
 .btn-nondeco {

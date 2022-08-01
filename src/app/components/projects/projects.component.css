@@ -30,6 +30,8 @@ h3, h6, p {
   border: none;
   cursor: pointer;
   font-size: 20px;
+  margin: 0 5px;
+  padding: 0;
 }
 
 .btn-nondeco:hover{

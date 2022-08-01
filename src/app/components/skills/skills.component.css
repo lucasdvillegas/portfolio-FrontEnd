@@ -1,10 +1,4 @@
-.mat-card{
-  border: 0 black;
-  background-color: #212529;
-  border-radius: 10px ;
-  margin: 2% 13%; /* Estaba margin 2% 10% */
-  display: flex;
-}
+
 
 .mat-card #third-card{
   padding: 0;
@@ -29,6 +23,7 @@ h3 {
   font: inherit;
   cursor: pointer;
   font-size: 20px;
+  margin: 0 5px;
 }
 
 .btn-nondeco:hover{
@@ -78,7 +73,7 @@ h3 {
   background: none;
   color: rgb(189, 189, 189);
   border: none;
-
+  padding: 0;
   cursor: pointer;
   font-size: 15px;
   margin: 0 20px;

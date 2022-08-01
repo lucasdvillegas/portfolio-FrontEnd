@@ -1,36 +1,82 @@
-<div
-class="card mat-card"
-id="third-card">
+<div class="card mat-card" id="third-card">
 
-<div class="comp-flex">
-  <h3>
-    Experiencia
-  </h3>
-  <button class="btn-nondeco"><i class="fa-solid fa-plus"></i></button>
-</div>
+  <div class="comp-flex">
+    <h3>
+      Experiencia
+    </h3>
+    <button #modalButton type="button" class="btn-nondeco" (click)="open()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
 
-
-<ul class="item-list">
-  <li > <!--*ngFor="let experience of experienceUser"-->
-    <div class="container">
-      <div id="work-box">
-        <i class="fa-solid fa-briefcase"
-           id="work-logo"></i>
-        <div class="text-box">
-          <h5>Experiencia - compañía</h5>
-          <h6>Experiencia - position</h6>
-          <p><time>start - end</time></p>
+  <ul class="item-list">
+    <li *ngFor="let Experiencia of expe; let i = index">
+      <!--Modal borrar-->
+      <div class="modal" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+              <h5 class="modal-title">Eliminar experiencia</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p style="color: #ffffffb4">¿Está seguro de que desea eliminar esta experiencia?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="delete(valorLista)"
+                data-bs-dismiss="modal">Confimar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="title-job">
-        <div class="logos-box">
-          <button class="btn-nodeco"><i class="fa-solid fa-pencil"></i></button>
-          <button class="btn-nodeco"><i class="fa-solid fa-trash"></i></button>
+      <!--Modal borrar (click)="delete(expe[i].id)"-->
+      <div class="container">
+        <div id="work-box">
+          <i class="fa-solid fa-briefcase" id="work-logo"></i>
+          <div class="text-box">
+            <h5>{{Experiencia.nombreE}}</h5>
+            <h6 style="color: #ffffffb4">{{Experiencia.descripcionE}}</h6>
+            <p style="color: #ffffffb4"><time>start - end</time></p>
+          </div>
         </div>
+        <div class="title-job">
+          <div class="logos-box">
+            <button class="btn-nodeco"><i class="fa-solid fa-pencil"></i></button>
+            <button class="btn-nodeco" (click)="openDelete(Experiencia.id)"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- Modal agregar -->
+<div class="modal fade" tabindex="-1" #testModal id="testModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle">Añadir nueva experiencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombreE" style="color: #FFFFFFE6">Nombre</label>
+            <input type="text" ngModel name="nombreE" class="form-control" id="nombreE"
+              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE">
+          </div>
+          <div class="form-group">
+            <label for="descripcionE" style="color: #FFFFFFE6">Puesto</label>
+            <input type="text" ngModel name="descripcionE" class="form-control" id="descripcionE"
+              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="save()">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
-  </li>
-</ul>
-
+  </div>
 </div>

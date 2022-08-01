@@ -36,7 +36,7 @@ import { interceptorProvider } from './service/interceptor-service';
     FormsModule
   ],
   providers: [
-
+    interceptorProvider
   ],
   bootstrap: [AppComponent]
 })
