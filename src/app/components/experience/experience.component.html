@@ -4,33 +4,13 @@
     <h3>
       Experiencia
     </h3>
-    <button #modalButton type="button" class="btn-nondeco" (click)="open()">
+    <button *ngIf="isLogged" #modalButton type="button" class="btn-nondeco" (click)="open()">
       <i class="fa-solid fa-plus"></i>
     </button>
   </div>
 
   <ul class="item-list">
-    <li *ngFor="let Experiencia of expe; let i = index">
-      <!--Modal borrar-->
-      <div class="modal" tabindex="-1" id="deleteModal">
-        <div class="modal-dialog">
-          <div class="modal-content bg-dark">
-            <div class="modal-header">
-              <h5 class="modal-title">Eliminar experiencia</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p style="color: #ffffffb4">¿Está seguro de que desea eliminar esta experiencia?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" (click)="delete(valorLista)"
-                data-bs-dismiss="modal">Confimar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Modal borrar (click)="delete(expe[i].id)"-->
+    <li *ngFor="let Experiencia of expe">
       <div class="container">
         <div id="work-box">
           <i class="fa-solid fa-briefcase" id="work-logo"></i>
@@ -42,8 +22,8 @@
         </div>
         <div class="title-job">
           <div class="logos-box">
-            <button class="btn-nodeco"><i class="fa-solid fa-pencil"></i></button>
-            <button class="btn-nodeco" (click)="openDelete(Experiencia.id)"><i class="fa-solid fa-trash"></i></button>
+            <button *ngIf="isLogged" class="btn-nodeco" (click)="openEdit(Experiencia.id)"><i class="fa-solid fa-pencil"></i></button>
+            <button *ngIf="isLogged" class="btn-nodeco" (click)="openDelete(Experiencia.id)"><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>
       </div>
@@ -80,3 +60,58 @@
     </div>
   </div>
 </div>
+<!-- Modal agregar -->
+
+<!--Modal borrar-->
+<div class="modal fade" tabindex="-1" #editModal id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar experiencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">¿Está seguro de que desea eliminar esta experiencia?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(valorLista)"
+          data-bs-dismiss="modal">Confimar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal borrar-->
+
+<!-- Modal editar -->
+<div class="modal fade" tabindex="-1" #editModal id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle">Editar experiencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombreE" style="color: #FFFFFFE6">Nombre</label>
+            <input type="text" ngModel name="nombreE" class="form-control" id="nombreE"
+              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE">
+          </div>
+          <div class="form-group">
+            <label for="descripcionE" style="color: #FFFFFFE6">Puesto</label>
+            <input type="text" ngModel name="descripcionE" class="form-control" id="descripcionE"
+              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update(valorLista)">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar -->
+

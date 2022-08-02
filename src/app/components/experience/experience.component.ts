@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵqueryRefresh } from '@angular/core';
 import { Experiencia } from 'src/app/model/experiencia';
 import { ExperienciaServiceService } from 'src/app/service/experiencia-service.service';
 import { TokenService, } from 'src/app/service/token.service';
 import { Modal } from 'bootstrap';
 import * as bootstrap from 'bootstrap';
+import { ResourceLoader } from '@angular/compiler';
 
 
 
@@ -17,29 +18,35 @@ export class ExperienceComponent implements OnInit {
   
 
   constructor(private  experienciaService:ExperienciaServiceService, private tokenService: TokenService){}
-  body:string = 'hola mundo'
+  body:string = '';
   testModal?: Modal | undefined;
-  isLogger = false;
+  deleteModal?: Modal | undefined;
+  editModal?: Modal | undefined;
+  isLogged = false;
+
 
   valorLista?:number;
   nombreE:string = '';
   descripcionE:string = '';
 
+  //atributos para editar
+  expLab:Experiencia = null;
+
  
   ngOnInit(): void {
     this.cargarExperiencia();
     if(this.tokenService.getToken()){
-      this.isLogger = true;
+      this.isLogged = true;
     }else{
-      this.isLogger = false;
+      this.isLogged = false;
     }
 
     
   }
 
- //agregar experiencia
+ // ***************** Métodos para AGREGAR experiencia y su modal ***************************
   save(){
-    this.testModal?.toggle();
+    this.testModal.toggle();
     const experiencia = new Experiencia(this.nombreE, this.descripcionE);
     this.experienciaService.save(experiencia).subscribe(
       data=>{
@@ -50,7 +57,6 @@ export class ExperienceComponent implements OnInit {
       })
   }
 
-  //Abrir modal
   open() {
     var el_testModal = document.getElementById('testModal');
     var button =document.createElement('button');
@@ -62,12 +68,13 @@ export class ExperienceComponent implements OnInit {
     this.testModal?.show();
   }
 
+  //Carga y actualiza la lista de experiencia
   cargarExperiencia():void{
     this.experienciaService.lista().subscribe(data => {this.expe = data;})
   }
 
 
-  //Lo que va al modal
+  //descarte
 
   /*onCreate(){
     const experiencia = new Experiencia(this.nombreE, this.posicion);
@@ -80,18 +87,16 @@ export class ExperienceComponent implements OnInit {
       })
   }**/
 
-
-
-
-
-  mostrarId(id?:number){
+  /*mostrarId(id?:number){
     let objetoExperiencia;
     this.experienciaService.detail(id!).subscribe(data => {
       objetoExperiencia = data;
     });
-  }
+  }*/
 
+  // ************************ Modal para BORRAR con el modal y su respectivo botón **************
   openDelete(id?:number) {
+    this.valorLista=id;
     var el_testModal = document.getElementById('deleteModal');
     var button =document.createElement('button');
     if (el_testModal ) {
@@ -100,7 +105,7 @@ export class ExperienceComponent implements OnInit {
       });
     }
     this.testModal?.show();
-    this.valorLista=id;
+
   }
 
   delete(id?:number){
@@ -116,4 +121,29 @@ export class ExperienceComponent implements OnInit {
     this.cargarExperiencia();
   }
 
+  //**********************Métodos para EDITAR con el modal y su botón respectivo ***********************
+  openEdit(id?:number) {
+    this.valorLista=id;
+    var el_testModal = document.getElementById('editModal');
+    var button =document.createElement('button');
+    if (el_testModal ) {
+      this.testModal= new Modal(el_testModal , {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
+    // console.log(this.valorLista); Muestra el valor del ID que reciben los modals
+  }
+
+  update(id?:number){
+    const experiencia = new Experiencia(this.nombreE, this.descripcionE);
+    this.experienciaService.update(id, experiencia).subscribe(
+      data =>{
+        this.cargarExperiencia();
+      }, err=>{
+          
+      }
+    )
+  }
+ 
 }
