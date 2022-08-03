@@ -16,9 +16,29 @@
   }
   
 .modal-content{
-    background-color: #212529;
+    background-color: 0f1112;
 }
 
 h2 {
   color: #FFFFFFE6;
+}
+
+.bg{
+  background-image: url(../../../assets/images/APLogo-20-20.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 50vh;
+}
+body {
+  background: 0f1112;
+  /* background: linear-gradient(to right, #000000, #000000); */
+}
+p{
+  color: #FFFFFFE6;
+  text-align: center;
+  font-size: 14px;
+}
+
+.container{
+  background-color: #1d2125e2;
 }

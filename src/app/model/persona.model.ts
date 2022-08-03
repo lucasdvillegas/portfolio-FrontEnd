@@ -4,6 +4,8 @@ export class persona {
     apellido:string;
     img:string;
 
+    //Falta backgroundImg y redes sociales
+
     constructor (nombre:string, apellido:string, img:string){
         this.nombre = nombre;
         this.apellido = apellido;

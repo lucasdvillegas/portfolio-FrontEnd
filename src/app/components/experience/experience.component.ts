@@ -3,8 +3,7 @@ import { Experiencia } from 'src/app/model/experiencia';
 import { ExperienciaServiceService } from 'src/app/service/experiencia-service.service';
 import { TokenService, } from 'src/app/service/token.service';
 import { Modal } from 'bootstrap';
-import * as bootstrap from 'bootstrap';
-import { ResourceLoader } from '@angular/compiler';
+
 
 
 
@@ -28,6 +27,8 @@ export class ExperienceComponent implements OnInit {
   valorLista?:number;
   nombreE:string = '';
   descripcionE:string = '';
+  fechaIngreso:string='';
+  fechaEgreso:string='';
 
   //atributos para editar
   expLab:Experiencia = null;
@@ -47,10 +48,9 @@ export class ExperienceComponent implements OnInit {
  // ***************** Métodos para AGREGAR experiencia y su modal ***************************
   save(){
     this.testModal.toggle();
-    const experiencia = new Experiencia(this.nombreE, this.descripcionE);
+    const experiencia = new Experiencia(this.nombreE, this.descripcionE, this.fechaIngreso, this.fechaEgreso);
     this.experienciaService.save(experiencia).subscribe(
       data=>{
-
         this.cargarExperiencia();
       }, err =>{
         alert("No se pudo añadir");
@@ -59,7 +59,7 @@ export class ExperienceComponent implements OnInit {
 
   open() {
     var el_testModal = document.getElementById('testModal');
-    var button =document.createElement('button');
+    //var button =document.createElement('button');
     if (el_testModal ) {
       this.testModal= new Modal(el_testModal , {
         keyboard: false
@@ -105,7 +105,6 @@ export class ExperienceComponent implements OnInit {
       });
     }
     this.testModal?.show();
-
   }
 
   delete(id?:number){
@@ -115,8 +114,7 @@ export class ExperienceComponent implements OnInit {
           this.cargarExperiencia();
         }, err=>{
           
-        }
-      )
+      });
     }
     this.cargarExperiencia();
   }
@@ -136,12 +134,12 @@ export class ExperienceComponent implements OnInit {
   }
 
   update(id?:number){
-    const experiencia = new Experiencia(this.nombreE, this.descripcionE);
-    this.experienciaService.update(id, experiencia).subscribe(
+    const experienciaEditar = new Experiencia(this.nombreE, this.descripcionE, this.fechaIngreso, this.fechaEgreso);
+    this.experienciaService.update(id, experienciaEditar).subscribe(
       data =>{
         this.cargarExperiencia();
       }, err=>{
-          
+          alert("La experiencia que desea cargar/editar ya existe.");
       }
     )
   }

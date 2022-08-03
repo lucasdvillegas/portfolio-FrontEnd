@@ -17,7 +17,7 @@
           <div class="text-box">
             <h5>{{Experiencia.nombreE}}</h5>
             <h6 style="color: #ffffffb4">{{Experiencia.descripcionE}}</h6>
-            <p style="color: #ffffffb4"><time>start - end</time></p>
+            <p style="color: #ffffffb4"><time>{{Experiencia.fechaIngreso}} - {{Experiencia.fechaEgreso}}</time></p>
           </div>
         </div>
         <div class="title-job">
@@ -44,12 +44,22 @@
           <div class="form-group">
             <label for="nombreE" style="color: #FFFFFFE6">Nombre</label>
             <input type="text" ngModel name="nombreE" class="form-control" id="nombreE"
-              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE">
+              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE" maxlength="30">
           </div>
           <div class="form-group">
             <label for="descripcionE" style="color: #FFFFFFE6">Puesto</label>
             <input type="text" ngModel name="descripcionE" class="form-control" id="descripcionE"
-              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE">
+              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE" maxlength="30">
+          </div>
+          <div class="form-group">
+            <label for="fechaIngreso" style="color: #FFFFFFE6">Fecha de ingreso</label>
+            <input type="text" ngModel name="fechaIngreso" class="form-control" id="fechaIngreso"
+              placeholder="1/11/1111" required [(ngModel)]="fechaIngreso" maxlength="11">
+          </div>
+          <div class="form-group">
+            <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de engreso</label>
+            <input type="text" ngModel name="fechaEgreso" class="form-control" id="fechaEgreso"
+              placeholder="1/11/1111" required [(ngModel)]="fechaEgreso" maxlength="11">
           </div>
         </form>
       </div>
@@ -97,12 +107,22 @@
           <div class="form-group">
             <label for="nombreE" style="color: #FFFFFFE6">Nombre</label>
             <input type="text" ngModel name="nombreE" class="form-control" id="nombreE"
-              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE">
+              placeholder="Nombre de la empresa" required [(ngModel)]="nombreE" maxlength="30">
           </div>
           <div class="form-group">
             <label for="descripcionE" style="color: #FFFFFFE6">Puesto</label>
             <input type="text" ngModel name="descripcionE" class="form-control" id="descripcionE"
-              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE">
+              placeholder="Puesto de trabajo" required [(ngModel)]="descripcionE" maxlength="30">
+          </div>
+          <div class="form-group">
+            <label for="fechaIngreso" style="color: #FFFFFFE6">Fecha de ingreso</label>
+            <input type="text" ngModel name="fechaIngreso" class="form-control" id="fechaIngreso"
+              placeholder="dd/mm/aaaa" required [(ngModel)]="fechaIngreso" maxlength="11">
+          </div>
+          <div class="form-group">
+            <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de egreso</label>
+            <input type="text" ngModel name="fechaEgreso" class="form-control" id="fechaEgreso"
+              placeholder="dd/mm/aaaa" required [(ngModel)]="fechaEgreso" maxlength="11">
           </div>
         </form>
       </div>
