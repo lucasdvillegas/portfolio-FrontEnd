@@ -42,7 +42,6 @@ export class ExperienceComponent implements OnInit {
       this.isLogged = false;
     }
 
-    
   }
 
  // ***************** Métodos para AGREGAR experiencia y su modal ***************************
@@ -73,26 +72,6 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.lista().subscribe(data => {this.expe = data;})
   }
 
-
-  //descarte
-
-  /*onCreate(){
-    const experiencia = new Experiencia(this.nombreE, this.posicion);
-    this.experienciaService.save(experiencia).subscribe(
-      data=>{
-        alert("Experiencia añadida");
-        this.cargarExperiencia();
-      }, err =>{
-        alert("No se pudo añadir");
-      })
-  }**/
-
-  /*mostrarId(id?:number){
-    let objetoExperiencia;
-    this.experienciaService.detail(id!).subscribe(data => {
-      objetoExperiencia = data;
-    });
-  }*/
 
   // ************************ Modal para BORRAR con el modal y su respectivo botón **************
   openDelete(id?:number) {
