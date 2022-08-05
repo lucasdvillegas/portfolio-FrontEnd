@@ -15,7 +15,6 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { interceptorProvider } from './service/interceptor-service';
-import { EducacionComponent } from './model/educacion/educacion.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { EducacionComponent } from './model/educacion/educacion.component';
     SkillsComponent,
     ProjectsComponent,
     HomeComponent,
-    LoginComponent,
-    EducacionComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
