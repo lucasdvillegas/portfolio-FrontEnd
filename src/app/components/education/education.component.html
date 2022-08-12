@@ -1,6 +1,4 @@
-<div
-class="card mat-card"
-id="third-card">
+<div class="card mat-card" id="third-card">
 
 <div class="comp-flex">
   <h3>
@@ -24,8 +22,8 @@ id="third-card">
       </div>
       <div class="title-job">
         <div class="logos-box">
-          <button *ngIf="isLogged" class="btn-nodeco"><i class="fa-solid fa-pencil"></i></button>
-          <button *ngIf="isLogged" class="btn-nodeco"><i class="fa-solid fa-trash"></i></button>
+          <button *ngIf="isLogged" class="btn-nodeco" (click)="openEdit(Educacion.id)"><i class="fa-solid fa-pencil"></i></button>
+          <button *ngIf="isLogged" class="btn-nodeco" (click)="openDelete(Educacion.id)"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
     </div>
@@ -44,26 +42,31 @@ id="third-card">
       </div>
       <div class="modal-body">
         <form #addForm novalidate #f="ngForm">
+
           <div class="form-group">
             <label for="nombreEducacion" style="color: #FFFFFFE6">Nombre del instituto</label>
             <input type="text" ngModel name="nombreEducacion" class="form-control" id="nombreEducacion"
-              placeholder="Nombre del instituto" required [(ngModel)]="nombreEducacion" maxlength="30">
+              placeholder="Nombre del instituto" required [(ngModel)]="nombreEducacion" maxlength="31">
           </div>
+
           <div class="form-group">
             <label for="descripcionEducacion" style="color: #FFFFFFE6">Titulo</label>
             <input type="text" ngModel name="descripcionEducacion" class="form-control" id="descripcionEducacion"
-              placeholder="titulación" required [(ngModel)]="descripcionEducacion" maxlength="30">
+              placeholder="titulación" required [(ngModel)]="descripcionEducacion" maxlength="31">
           </div>
+
           <div class="form-group">
             <label for="fechaIngreso" style="color: #FFFFFFE6">Fecha de ingreso</label>
             <input type="text" ngModel name="fechaIngreso" class="form-control" id="fechaIngreso"
               placeholder="1/11/1111" required [(ngModel)]="fechaIngreso" maxlength="11">
           </div>
+
           <div class="form-group">
             <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de egreso</label>
             <input type="text" ngModel name="fechaEgreso" class="form-control" id="fechaEgreso"
               placeholder="1/11/1111" required [(ngModel)]="fechaEgreso" maxlength="11">
           </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -74,3 +77,66 @@ id="third-card">
   </div>
 </div>
 <!-- Modal agregar -->
+
+<!--Modal borrar-->
+<div class="modal fade" tabindex="-1" #deleteEduModal id="deleteEduModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar educación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">¿Está seguro de que desea eliminar esta educación?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(valorEducacion)"
+          data-bs-dismiss="modal">Confimar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal borrar-->
+
+<!-- Modal editar -->
+<div class="modal fade" tabindex="-1" #editEduModal id="editEduModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle">Editar educación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombreEducacion" style="color: #FFFFFFE6">Nombre del instituto</label>
+            <input type="text" ngModel name="nombreEducacion" class="form-control" id="nombreEducacion"
+              placeholder="Nombre del instituto" required [(ngModel)]="nombreEducacion" maxlength="32">
+          </div>
+          <div class="form-group">
+            <label for="descripcionEducacion" style="color: #FFFFFFE6">Titulo</label>
+            <input type="text" ngModel name="descripcionEducacion" class="form-control" id="descripcionEducacion"
+              placeholder="Titulo" required [(ngModel)]="descripcionEducacion" maxlength="32">
+          </div>
+          <div class="form-group">
+            <label for="fechaIngreso" style="color: #FFFFFFE6">Fecha de ingreso</label>
+            <input type="text" ngModel name="fechaIngreso" class="form-control" id="fechaIngreso"
+              placeholder="dd/mm/aaaa" required [(ngModel)]="fechaIngreso" maxlength="11">
+          </div>
+          <div class="form-group">
+            <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de egreso</label>
+            <input type="text" ngModel name="fechaEgreso" class="form-control" id="fechaEgreso"
+              placeholder="dd/mm/aaaa" required [(ngModel)]="fechaEgreso" maxlength="11">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update(valorEducacion)">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar -->

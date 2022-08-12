@@ -18,13 +18,13 @@ export class EducationComponent implements OnInit {
   isLogged=false;
 
   /* Variables para el uso de la clase Educacion*/ 
-  valorLista?:number;
-  nombreEducacion:string = '';
+  public nombreEducacion:string = '';
   descripcionEducacion:string = '';
   fechaIngreso:string='';
   fechaEgreso:string='';
 
   /* Variables que van al modal */
+  valorEducacion?:number;
   body:string = '';
   testModal?: Modal | undefined;
   deleteModal?: Modal | undefined;
@@ -77,8 +77,8 @@ export class EducationComponent implements OnInit {
 
     // ************************ Modal para BORRAR con el modal y su respectivo botón **************
     openDelete(id?:number) {
-      this.valorLista=id;
-      var el_testModal = document.getElementById('deleteModal');
+      this.valorEducacion=id;
+      var el_testModal = document.getElementById('deleteEduModal');
       var button =document.createElement('button');
       if (el_testModal ) {
         this.testModal= new Modal(el_testModal , {
@@ -102,8 +102,8 @@ export class EducationComponent implements OnInit {
   
     //**********************Métodos para EDITAR con el modal y su botón respectivo ***********************
     openEdit(id?:number) {
-      this.valorLista=id;
-      var el_testModal = document.getElementById('editModal');
+      this.valorEducacion=id;
+      var el_testModal = document.getElementById('editEduModal');
       var button =document.createElement('button');
       if (el_testModal ) {
         this.testModal= new Modal(el_testModal , {
@@ -111,7 +111,7 @@ export class EducationComponent implements OnInit {
         });
       }
       this.testModal?.show();
-      // console.log(this.valorLista); Muestra el valor del ID que reciben los modals
+       
     }
   
     update(id?:number){
@@ -123,6 +123,7 @@ export class EducationComponent implements OnInit {
             alert("La educacion que desea cargar/editar ya existe.");
         }
       )
+      
     }
 
 }

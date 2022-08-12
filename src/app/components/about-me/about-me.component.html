@@ -1,20 +1,47 @@
-<section>
-  <div
-    class="card mat-card"
-    id="second-card">
-
-    <div class="comp-flex">
-      <h3>
-        Acerca de mi
-      </h3>
-      <button class="btn-nondeco"><i class="fa-solid fa-pencil"></i></button>
+<div *ngIf="datosCargados">
+  <section>
+    <div
+      class="card mat-card"
+      id="second-card">
+  
+      <div class="comp-flex">
+        <h3>
+          Acerca de mi
+        </h3>
+        <button class="btn-nondeco" *ngIf="isLogged" (click)="open()"><i class="fa-solid fa-pencil"></i></button>
+      </div>
+  
+      <div class="text-box">
+        <p >
+          {{sobreItem?.descripcionSobre}}
+        </p>
+      </div>
     </div>
-
-    <div class="text-box">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab illo, nihil praesentium dolores animi tempora eaque quidem vitae culpa omnis eius nostrum repellat blanditiis placeat exercitationem facilis itaque in fugiat?
-      </p>
+  
+  </section>
+  <!-- Modal editar -->
+  <div class="modal fade" tabindex="-1" #editSobreModal id="editSobreModal">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header" style="text-align: center;">
+          <h5 class="modal-tittle" style="color: #FFFF;">Editar descripcion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="color: #FFFF;"></button>
+        </div>
+        <div class="modal-body">
+          <form #addForm novalidate #f="ngForm">
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label" style="color: #FFFF;">Acerca de:</label>
+              <textarea name="descripcionSobre" class="form-control" id="message-text" placeholder="Cuéntanos sobre ti..." [(ngModel)]="sobreItem.descripcionSobre"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()" >Confimar</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
   </div>
-
-</section>
+  <!-- Modal editar -->
+</div>

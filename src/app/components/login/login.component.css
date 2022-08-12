@@ -27,7 +27,7 @@ h2 {
   background-image: url(../../../assets/images/APLogo-20-20.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 50vh;
+  background-size: 25rem;
 }
 body {
   background: 0f1112;
@@ -41,4 +41,8 @@ p{
 
 .container{
   background-color: #1d2125e2;
+  
 }
+
+
+

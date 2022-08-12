@@ -41,7 +41,7 @@
 "skill":[{
     "name": "HTML",
     "progress": "85",
-    "type": "fa-brands fa-html5"
+    "type": "../../../../../../"
   },
   {
     "name": "CSS",
@@ -72,7 +72,7 @@
     "name":"Proyecto #YoProgramo",
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo sed id impedit eius nihil ex, doloremque veritatis quae tempora inventore..",
     "link":"",
-    "img":"../../../assets/images/fire1.jpg"
+    "img":"../../../../../../"
   },
   {
     "name":"Proyecto #YoProgramo",

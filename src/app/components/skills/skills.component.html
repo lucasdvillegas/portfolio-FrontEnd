@@ -1,36 +1,88 @@
-<div
-  class="card mat-card"
-  id="third-card">
-
+<div class="card mat-card" id="third-card">
   <div class="comp-flex">
     <h3>
       Habilidades
     </h3>
-    <button class="btn-nondeco"><i class="fa-solid fa-plus"></i></button>
+    <button *ngIf="isLogged" class="btn-nondeco"><i class="fa-solid fa-plus" (click)="open()"></i></button>
   </div>
 
   <div class="box-bars">
 
     <ul class="item-list">
-      <li *ngFor="let skill of skillUser">
+      <li *ngFor="let Habilidad of habi">
         <div class="box-bar">
           <div class="box-bar-order">
-            <i [class]="skill.type" id="skill-logo"></i>
-            <h6>{{skill.name}}</h6>
-            <progress [value]="skill.progress" max="100"></progress>
+            <img [src]="Habilidad.typeHabilidad" id="skill-logo">
+            <h6>{{Habilidad.nombreHabilidad}}</h6>
+            <progress max="100" [value]="Habilidad.progresoHabilidad"></progress>
           </div>
 
           <div class="button-box">
-            <button class="btn-nodeco edit-button"><i class="fa-solid fa-pencil"></i></button>
-            <button class="btn-nodeco trash-button"><i class="fa-solid fa-trash"></i></button>
+            <button class="btn-nodeco edit-button" ><i class="fa-solid fa-pencil"></i></button>
+            <button class="btn-nodeco trash-button" (click)="openDelete(Habilidad.id)"><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>
 
       </li>
     </ul>
-
   </div>
-
 </div>
 
+<!--Modal Agregar-->
+<div class="modal fade" tabindex="-1" #skillModal id="skillModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle" style="color: #FFFFFFE6">Añadir nueva habilidad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm novalidate >
+
+          <select class="form-select" aria-label="Default select example" id="skillOption" > 
+            <option selected disabled>Selecciona la habilidad</option>
+            <option value="0">HTML</option>
+            <option value="1">CSS</option>
+            <option value="2">JS</option>
+            <option value="3">Boot</option>
+
+          </select>
+
+          <div class="form-group">
+            <label for="progresoVar" class="form-label">Progreso</label>
+            <input type="range" class="form-range" min="0" max="100" id="progresoVar"> 
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submit()">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal agregar -->
+
+<!--Modal borrar-->
+<div class="modal fade" tabindex="-1" #deleteHabModal id="deleteHabModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar educación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">¿Está seguro de que desea eliminar esta habilidad?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(valorHabilidad)"
+          data-bs-dismiss="modal">Confimar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal borrar-->
 
