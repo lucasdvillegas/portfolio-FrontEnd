@@ -18,10 +18,6 @@ export class SkillsComponent implements OnInit {
   progresoHabilidad: number;
   typeHabilidad: string;
 
-  opcionUno: number = 1;
-  opcionDos: number = 2;
-  opcionTres: number = 3;
-  opcionCuatro: number = 4;
 
   skillUser: any;
   constructor(private habilidadService: HabilidadService, private tokenService: TokenService) { }
@@ -67,6 +63,7 @@ export class SkillsComponent implements OnInit {
     this.testModal?.show();
   }
 
+  //Selecciona la habilidad en base al valor otorgado en el formulario
   seleccionado(id: string) {
     switch (id) {
       case "0":
@@ -84,6 +81,22 @@ export class SkillsComponent implements OnInit {
       case "3":
         this.typeHabilidad = "../assets/icons/bootstrap.png";
         this.nombreHabilidad = "Bootstrap";
+        break;
+      case "4":
+        this.typeHabilidad = "../assets/icons/angular.png";
+        this.nombreHabilidad = "Angular";
+        break;
+      case "5":
+        this.typeHabilidad = "../assets/icons/java.png";
+        this.nombreHabilidad = "Java";
+        break;
+      case "6":
+        this.typeHabilidad = "../assets/icons/spring.png";
+        this.nombreHabilidad = "Spring";
+        break;
+      case "7":
+        this.typeHabilidad = "../assets/icons/typescript.png";
+        this.nombreHabilidad = "TypeScript";
         break;
       default:
         alert("Selecciona una habilidad");
@@ -104,7 +117,7 @@ export class SkillsComponent implements OnInit {
     this.progresoHabilidad = parseInt((<HTMLInputElement>document.getElementById("progresoVar")).value);
     console.log(this.progreso);
 
-    
+
     const nuevaHabilidad = new Habilidad(this.nombreHabilidad, this.progresoHabilidad, this.typeHabilidad);
     this.habilidadService.save(nuevaHabilidad).subscribe(
       data => {
