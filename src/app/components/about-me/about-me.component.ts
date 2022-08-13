@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./about-me.component.css']
 })
 export class AboutMeComponent implements OnInit {
-  persona:persona = new persona("", "", "");
+  //persona:persona = new persona("", "", "");
   datosCargados:boolean = false;
   sobreItem?:Sobre;
 
@@ -26,12 +26,12 @@ export class AboutMeComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.cargarSobre();
     if(this.tokenService.getToken()){
       this.isLogged = true;
     }else{
       this.isLogged = false;
     }
+    this.cargarSobre();
   }
 
   cargarSobre():void {
@@ -59,10 +59,8 @@ export class AboutMeComponent implements OnInit {
     this.sobreService.update(sobreUpdate).subscribe(
       data=>{
         this.cargarSobre();
-        
       }, err =>{
-        
+  
     })
-    
   }
 }

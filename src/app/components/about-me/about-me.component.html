@@ -11,7 +11,7 @@
         <button class="btn-nondeco" *ngIf="isLogged" (click)="open()"><i class="fa-solid fa-pencil"></i></button>
       </div>
   
-      <div class="text-box">
+      <div class="text-box" >
         <p >
           {{sobreItem?.descripcionSobre}}
         </p>
@@ -20,7 +20,7 @@
   
   </section>
   <!-- Modal editar -->
-  <div class="modal fade" tabindex="-1" #editSobreModal id="editSobreModal">
+  <div class="modal fade" tabindex="-1" #editSobreModal id="editSobreModal" (click)="cargarSobre()">
     <div class="modal-dialog">
       <div class="modal-content bg-dark">
         <div class="modal-header" style="text-align: center;">
