@@ -109,13 +109,13 @@ export class SkillsComponent implements OnInit {
   submit() {
     //toma el valor de la lista desplegable 
     var valorSeleccionado = (<HTMLInputElement>document.getElementById("skillOption")).value;
-    console.log(valorSeleccionado);
+  
     //envia el valor a la funcion switch para setear los cambios 
-    this.seleccionado(valorSeleccionado); //Muestra la id
-    console.log(this.typeHabilidad + " " + this.nombreHabilidad); //Muestra los valores que toman 
+    this.seleccionado(valorSeleccionado); //Muestra la id o el valor de la habilidad seleccionada
+    
     //obtenemos el valor del progreso y lo convertimos a integer
     this.progresoHabilidad = parseInt((<HTMLInputElement>document.getElementById("progresoVar")).value);
-    console.log(this.progreso);
+  
 
 
     const nuevaHabilidad = new Habilidad(this.nombreHabilidad, this.progresoHabilidad, this.typeHabilidad);
@@ -151,6 +151,40 @@ export class SkillsComponent implements OnInit {
         });
     }
     this.cargarHabilidad();
+  }
+
+  openEdit(id?:number) {
+    this.valorHabilidad=id;
+    var el_testModal = document.getElementById('skillEditModal');
+    var button =document.createElement('button');
+    if (el_testModal ) {
+      this.testModal= new Modal(el_testModal , {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
+  }
+
+  update(id?:number){
+    //toma el valor de la lista desplegable 
+    var valorSeleccionado = (<HTMLInputElement>document.getElementById("skillEditOption")).value;
+  
+    //envia el valor a la funcion switch para setear los cambios 
+    this.seleccionado(valorSeleccionado); 
+
+    //obtenemos el valor del progreso y lo convertimos a integer
+    this.progresoHabilidad = parseInt((<HTMLInputElement>document.getElementById("editProgreso")).value);
+    console.log("Valor del progreso de la habilidad al editar" + this.progresoHabilidad);
+
+    const nuevaHabilidad = new Habilidad(this.nombreHabilidad, this.progresoHabilidad, this.typeHabilidad);
+    this.habilidadService.update(id, nuevaHabilidad).subscribe(
+      data => {
+        console.log("Se cargó correctamente");
+        this.cargarHabilidad();
+      }, err => {
+        alert("No puede seleccionar la misma habilidad más de una vez");
+      }
+    )
   }
 
 }
