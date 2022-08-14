@@ -5,7 +5,7 @@ section{
 
 .mat-card{
   border: 0 black;
-  background-color: black;
+  background-color: #212529;
   border-radius: 5px ;
   margin: 2% 13%;
 }
