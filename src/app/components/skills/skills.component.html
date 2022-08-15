@@ -18,8 +18,8 @@
           </div>
 
           <div class="button-box">
-            <button class="btn-nodeco edit-button" (click)="openEdit(Habilidad.id)"><i class="fa-solid fa-pencil"></i></button>
-            <button class="btn-nodeco trash-button" (click)="openDelete(Habilidad.id)"><i class="fa-solid fa-trash"></i></button>
+            <button *ngIf="isLogged" class="btn-nodeco edit-button" (click)="openEdit(Habilidad.id)"><i class="fa-solid fa-pencil"></i></button>
+            <button *ngIf="isLogged" class="btn-nodeco trash-button" (click)="openDelete(Habilidad.id)"><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>
 

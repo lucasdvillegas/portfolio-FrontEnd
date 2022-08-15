@@ -22,8 +22,8 @@
             </div>
 
             <div class="card-footer">
-              <button class="btn-nodeco edit-button"><i class="fa-solid fa-pencil"></i></button>
-              <button class="btn-nodeco trash-button"><i class="fa-solid fa-trash"></i></button>
+              <button *ngIf="isLogged" class="btn-nodeco edit-button" (click)="openEdit(Proyecto.id)"><i class="fa-solid fa-pencil"></i></button>
+              <button *ngIf="isLogged" class="btn-nodeco trash-button" (click)="openDelete(Proyecto.id)"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
 
@@ -39,7 +39,7 @@
   <div class="modal-dialog">
     <div class="modal-content bg-dark">
       <div class="modal-header" style="text-align: center;">
-        <h5 class="modal-tittle">Añadir nuevo proyecto</h5>
+        <h5 class="modal-tittle" style="color: #FFFF;">Añadir nuevo proyecto</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
           style="color: #FFFF;"></button>
       </div>
@@ -49,25 +49,25 @@
           <div class="form-group">
             <label for="nombreProyecto" style="color: #FFFFFFE6">Nombre del proyecto</label>
             <input type="text" ngModel name="nombreProyecto" class="form-control" id="nombreProyecto"
-              placeholder="Nombre del proyecto" required [(ngModel)]="nombreProyecto" maxlength="31">
+              placeholder="Nombre del proyecto" required [(ngModel)]="nombreProyecto" maxlength="20">
           </div>
 
           <div class="form-group">
             <label for="descripcionProyecto" style="color: #FFFFFFE6">Descripción del proyecto</label>
             <input type="text" ngModel name="descripcionProyecto" class="form-control" id="descripcionProyecto"
-              placeholder="descripcion" required [(ngModel)]="descripcionProyecto" maxlength="300">
+              placeholder="Breve descripcion" required [(ngModel)]="descripcionProyecto" maxlength="80">
           </div>
 
           <div class="form-group">
             <label for="imagenProyecto" style="color: #FFFFFFE6">Link de la imagen</label>
             <input type="text" ngModel name="imagenProyecto" class="form-control" id="imagenProyecto"
-              placeholder="Insertar url de imagen" required [(ngModel)]="imagenProyecto" maxlength="500">
+              placeholder="https://www.mi-imagen.." required [(ngModel)]="imagenProyecto" maxlength="200">
           </div>
 
           <div class="form-group">
             <label for="linkProyecto" style="color: #FFFFFFE6">Link hacia el proyecto</label>
             <input type="text" ngModel name="linkProyecto" class="form-control" id="linkProyecto"
-              placeholder="Insertal Url del proyecto" required [(ngModel)]="linkProyecto" maxlength="500">
+              placeholder="https://www.miurl.." required [(ngModel)]="linkProyecto" maxlength="200">
           </div>
 
         </form>
@@ -80,3 +80,66 @@
   </div>
 </div>
 <!-- Modal agregar -->
+
+<!--Modal borrar-->
+<div class="modal fade" tabindex="-1" #deleteProModal id="deleteProModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #FFFFFFE6">Eliminar proyecto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">¿Está seguro de que desea eliminar este proyecto?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="delete(valorProyecto)"
+          data-bs-dismiss="modal">Confimar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal borrar-->
+
+<!-- Modal editar -->
+<div class="modal fade" tabindex="-1" #editProModal id="editProModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle" style="color: #FFFFFFE6">Editar proyecto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombreProyecto" style="color: #FFFFFFE6">Nombre del proyecto</label>
+            <input type="text" ngModel name="nombreProyecto" class="form-control" id="nombreProyecto"
+              placeholder="Nombre del proyecto" required [(ngModel)]="nombreProyecto" maxlength="20">
+          </div>
+          <div class="form-group">
+            <label for="descripcionProyecto" style="color: #FFFFFFE6">Descripción</label>
+            <input type="text" ngModel name="descripcionProyecto" class="form-control" id="descripcionProyecto"
+              placeholder="Breve descripcion" required [(ngModel)]="descripcionProyecto" maxlength="80">
+          </div>
+          <div class="form-group">
+            <label for="imagenProyecto" style="color: #FFFFFFE6">Url de la imagen</label>
+            <input type="text" ngModel name="imagenProyecto" class="form-control" id="imagenProyecto"
+              placeholder="https://www.mi-imagen.." required [(ngModel)]="imagenProyecto" maxlength="200">
+          </div>
+          <div class="form-group">
+            <label for="linkProyecto" style="color: #FFFFFFE6">Link del proyecto</label>
+            <input type="text" ngModel name="linkProyecto" class="form-control" id="linkProyecto"
+              placeholder="https://www.miurl.." required [(ngModel)]="linkProyecto" maxlength="200">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update(valorProyecto)">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal editar -->
