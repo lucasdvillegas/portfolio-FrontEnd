@@ -1,6 +1,4 @@
-<section>
-  <div class="card mat-card" id="second-card">
-
+  <div class="mat-card" id="third-card">
     <div class="comp-flex">
       <h3>
         Proyectos
@@ -14,23 +12,27 @@
 
       <ul class="item-list">
         <li *ngFor="let Proyecto of proyec">
-          <div class="project ">
-            <div>
-              <a [href]="Proyecto.linkProyecto" target="_blank"><img alt="" [src]="Proyecto.imagenProyecto"> </a>
-              <h6><strong>{{Proyecto.nombreProyecto}}</strong></h6>
-              <p>{{Proyecto.descripcionProyecto}}</p>
+
+          <div class="card" style="margin: 0 5px;">
+            <a [href]="Proyecto.linkProyecto" target="_blank" class="img-container"><img [src]="Proyecto.imagenProyecto" class="card-img-top" alt="..."></a>
+
+            <div class="card-body">
+              <h5 class="card-title">{{Proyecto.nombreProyecto}}</h5>
+              <p class="card-text" style="color: black;">{{Proyecto.descripcionProyecto}}</p>
             </div>
-            <div class="button-box">
+
+            <div class="card-footer">
               <button class="btn-nodeco edit-button"><i class="fa-solid fa-pencil"></i></button>
               <button class="btn-nodeco trash-button"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
+
         </li>
       </ul>
     </div>
 
   </div>
-</section>
+
 
 <!-- Modal agregar -->
 <div class="modal fade" tabindex="-1" #proyModal id="proyModal">

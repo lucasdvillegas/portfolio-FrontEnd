@@ -1,15 +1,14 @@
-section{
-  border-radius: 15px;
-}
+
 .mat-card{
   border: 0 black;
   background-color: #212529;
   border-radius: 10px ;
   margin: 2% 13%;
   display: flex;
+  flex-direction: column;
 }
 
-.mat-card #second-card{
+.mat-card #third-card{
   padding: 0;
   border-radius: 10px 10px 10px 10px;
 }
@@ -20,7 +19,6 @@ section{
 }
 
 h3, h6, p {
-  margin: 3px 0;
   color: #FFFFFFE6;
 }
 
@@ -46,26 +44,11 @@ h3, h6, p {
 /*Projects box*/
 
 .projects-box{
-  margin: 3% 5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  margin: auto;
 }
 
 /*Card project*/
 
-.project{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 5px;
-  text-align: center;
-  width: 225px;
-  height: 245px;
-}
 
 .project-tarjet {
   display: flex;
@@ -79,14 +62,30 @@ p {
   font-size: 10px;
 }
 
-li{
-  margin: 0;
-  padding: 0;
+.card {
+  display: flex;
+  align-items: center;
+  margin: 5px 5px 5px 5px;
 }
-.project img{
-  width: 200px;
-  height: 125px;
+
+.img-container {
+  width: 260px;
+  height: 150px;
+}
+.card img{
+  object-fit: cover;
+  margin-top: 10px;
+  width:  100%;
+  height: 150px;
   border-radius: 5px;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.text-card {
+  text-align: center;
 }
 
 /*BOTONES*/
@@ -94,6 +93,7 @@ li{
 .button-box {
   display: flex;
   justify-content: space-between;
+
 }
 
 .btn-nodeco{
@@ -114,13 +114,18 @@ ul{
  flex-wrap: wrap;
  justify-content: space-between;
  align-items: center;
- margin: 10px;
 }
+
 ul.item-list{
+  padding: 0 0 0 0;
+  overflow: hidden;
   list-style: none;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
 }
+
+li{
+  margin: 5px 5px 5px 5px;
+}
+
 @media screen and (max-width: 650px){
   ul.item-list {
     flex-direction: column;
