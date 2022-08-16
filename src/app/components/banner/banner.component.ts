@@ -61,11 +61,10 @@ export class BannerComponent implements OnInit {
     console.log(personaActualizada);
     this.personaService.update(id, personaActualizada).subscribe(
       data =>{
-        this.personaService.getPersona();
+        this.personaService.getPersona().subscribe(data =>{ this.persona = data;
+        });
       }, err=>{
           alert("No se pudo guardar los datos");
-      }
-    );
-    
+      });
   }
 }

@@ -5,8 +5,8 @@
       </div>
       <div id="info" style="padding: 16px">
           <div class="info-img">
-            <div class="profile-image" style="background-image: url(../../../assets/images/User-profile-img.jpg);"></div> <!--style="background-image: url({{dataUser.image}})"-->
-              <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
+            <div class="profile-image" style="background-image: url({{persona.img}});"></div> 
+            <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
           </div>
           <div class="info-data">
               <div class="personal-info">
@@ -83,7 +83,7 @@
           <div class="form-group">
             <label for="img" style="color: #FFFFFFE6">Url de la imagen</label>
             <input type="text" ngModel name="img" class="form-control" id="img"
-              placeholder="urls.." required  maxlength="11" [(ngModel)]="img"> 
+              placeholder="urls.." required  maxlength="200" [(ngModel)]="img"> 
           </div>
           <!-- <div class="form-group">
             <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de egreso</label>
