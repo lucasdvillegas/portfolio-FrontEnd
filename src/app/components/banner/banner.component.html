@@ -6,7 +6,7 @@
       <div id="info" style="padding: 16px">
           <div class="info-img">
             <div class="profile-image" style="background-image: url(../../../assets/images/User-profile-img.jpg);"></div> <!--style="background-image: url({{dataUser.image}})"-->
-              <button *ngIf="isLogged" class="btn-nondeco"><i class="fa-solid fa-pencil"></i></button>
+              <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
           </div>
           <div class="info-data">
               <div class="personal-info">
@@ -58,20 +58,45 @@
 
 </section>
 
-<!-- Ingresando modal -->
-<div class="modal" id="myModal">
+
+<!-- Modal editar -->
+<div class="modal fade" tabindex="-1" #editPersModal id="editPersModal">
   <div class="modal-dialog">
     <div class="modal-content bg-dark">
-      <div class="modal-header">
-          <h5 class="modal-title" style="color: #ffffff;"> Añadir intereses </h5>
-          <button class="btn btn-close" data-bs-dismiss="modal"></button>
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-tittle" style="color: #FFFFFFE6">Editar perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          style="color: #FFFF;"></button>
       </div>
-      <div class="modal-body" style="color: #ffffff;">
-        LA GUITA, DAME LA GUITA. 
+      <div class="modal-body">
+        <form #addForm novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="Nombre" style="color: #FFFFFFE6">Nombre</label>
+            <input type="text" ngModel name="Nombre" class="form-control" id="Nombre"
+              placeholder="Nombre" required maxlength="32" [(ngModel)]="nombre">
+          </div>
+          <div class="form-group">
+            <label for="Apellido" style="color: #FFFFFFE6">Apellido</label>
+            <input type="text" ngModel name="Apellido" class="form-control" id="Apellido"
+              placeholder="Apellido" required  maxlength="32" [(ngModel)]="apellido">
+          </div>
+          <div class="form-group">
+            <label for="img" style="color: #FFFFFFE6">Url de la imagen</label>
+            <input type="text" ngModel name="img" class="form-control" id="img"
+              placeholder="urls.." required  maxlength="11" [(ngModel)]="img"> 
+          </div>
+          <!-- <div class="form-group">
+            <label for="fechaEgreso" style="color: #FFFFFFE6">Fecha de egreso</label>
+            <input type="text" ngModel name="fechaEgreso" class="form-control" id="fechaEgreso"
+              placeholder="dd/mm/aaaa" required  maxlength="11">
+          </div> -->
+        </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Confimar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
+<!-- Modal editar -->
