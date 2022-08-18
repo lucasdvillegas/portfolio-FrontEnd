@@ -14,7 +14,7 @@ import { ExperienceComponent } from '../experience/experience.component';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  persona:persona = new persona("", "", "");
+  persona:persona = new persona("", "", "", "", "", "", "", "");
   experiencia:Experiencia;
   
 
@@ -26,8 +26,14 @@ export class BannerComponent implements OnInit {
   nombre:string = '';
   apellido:string= '';
   img:string= '';
+  imgBack:string = '';
+  titulo:string = '';
+  ubicacion:string = '';
+  gitLink:string = '';
+  linLink:string = '';
 
   ngOnInit(): void {
+    
     this.personaService.getPersona().subscribe(data =>{ this.persona = data;
     })
     if(this.tokenService.getToken()){
@@ -35,6 +41,7 @@ export class BannerComponent implements OnInit {
     }else{
       this.isLogged = false;
     }
+    
   }
 
   /* Variables que van al modal */
@@ -57,7 +64,7 @@ export class BannerComponent implements OnInit {
 
   update(){
     let id = 1;
-    const personaActualizada = new persona(this.nombre, this.apellido, this.img);
+    const personaActualizada = new persona(this.nombre, this.apellido, this.img, this.imgBack, this.titulo, this.ubicacion, this.gitLink, this.linLink);
     console.log(personaActualizada);
     this.personaService.update(id, personaActualizada).subscribe(
       data =>{

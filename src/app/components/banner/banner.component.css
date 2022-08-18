@@ -1,16 +1,20 @@
-
-section{
+section {
   border-radius: 15px;
 }
 
-.mat-card{
+.mat-card {
   border: 0 black;
   background-color: #212529;
-  border-radius: 5px ;
+  border-radius: 5px;
   margin: 2% 13%;
 }
+.comp-flex{
+  display: flex;
+  margin: 15px 15px;
+  justify-content:space-between;
+}
 
-.mat-card #first-card{
+.mat-card #first-card {
   padding: 0;
   border-radius: 10px 10px 10px 10px;
 }
@@ -20,16 +24,21 @@ div #profile-background {
   display: flex;
 }
 
-div #profile-background img{
-  width: 100%;
-  height: 40%;
-  border-radius: 10px 10px 0 0;
+.profile-img-container {
+  background-size: contain;
+  max-height: 350px;
 }
 
-.info-img i{
+div #profile-background img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+
+}
+
+.info-img i {
   font-size: 20px;
   margin: 0 5px;
-  /* color: #FFFFFFE6; */
   display: flex;
   justify-content: flex-end;
   text-decoration: none;
@@ -46,12 +55,8 @@ div #profile-background img{
 }
 
 .btn-nondeco:hover {
-  color:white;
-}
-
-/* .info-img i:hover{
   color: white;
-} */
+}
 
 .info-img {
   display: flex;
@@ -85,20 +90,6 @@ div #profile-background img{
   color: rgb(189, 189, 189);
 }
 
-/* .link:hover {
-  color: white;
-} */
-
-/* .profile-image {
-  border: 4px solid #212529;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin-top: -7em;
-  z-index: 2;
-  display: flex;
-
-} */
 
 
 .info-data {
@@ -117,32 +108,34 @@ ul li a {
   text-decoration: none;
   display: flex;
   align-items: center;
-  cursor:auto;
+  cursor: auto;
 }
 
-ul li a h2{
+ul li a h2 {
   font-size: 16px;
   margin: 0 12px;
   color: #FFFFFFE6;
 }
 
 
-#info {
+div #info {
   background-color: #212529;
   border-radius: 0px 0px 10px 10px;
+  margin: 0;
+  padding: 0;
 }
 
-div .info-data div h1{
+div .info-data div h1 {
   font-size: 24px;
   color: #FFFFFFE6;
 }
 
-div .info-data div h3{
+div .info-data div h3 {
   font-size: 15px;
   color: #FFFFFFE6;
 }
 
-div .info-data div span{
+div .info-data div span {
   font-size: 15px;
   color: #FFFFFFE6;
 }
@@ -154,101 +147,105 @@ div .info-data div span{
 }
 
 button {
-  margin: 0 5px;
+ margin-right: 5px;
 }
 
-.btn-light{
+.btn-light {
   color: #FFFFFFE6;
   background-color: #212529;
 
 }
 
-.btn-light:hover{
+.btn-light:hover {
   color: #FFFFFFE6;
   background-color: #41464b;
 }
 
-
-/* a i:hover{
- color:#808080;
-} */
-
+#info-action{
+  margin: 10px 10px;
+}
 
 
-@media screen and (max-width: 768px){
+
+
+@media screen and (max-width: 768px) {
   .profile-image {
-      border: 4px solid #212529;
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      margin-top: -6.5em;
-      z-index: 2;
-      display: flex;
+    border: 4px solid #212529;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: -6.5em;
+    z-index: 2;
+    display: flex;
 
   }
 
   .info-data {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 20px;
-      flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    flex-direction: column;
   }
 
-  .personal-info{
-      display: flex;
-      flex-direction: column;
+  .personal-info {
+    display: flex;
+    flex-direction: column;
 
   }
 
   #info-details {
-      margin: 10px 0 0 -31px;
+    margin: 10px 0 0 -31px;
   }
 
 
 }
-@media screen and (max-width: 680px){
+
+@media screen and (max-width: 680px) {
   .profile-image {
-      border: 4px solid #212529;
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      margin-top: -4em;
-      z-index: 2;
-      display: flex;
+    border: 4px solid #212529;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-top: -4em;
+    z-index: 2;
+    display: flex;
 
   }
 
   .btn-nondeco {
-      background: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 
-      border: none;
-      padding: 0;
-
-      cursor: pointer;
-      margin-left: 100px;
   }
 }
 
-@media screen and (max-width: 472px){
+@media screen and (max-width: 492px) {
 
   .profile-image {
-      border: 4px solid #212529;
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      margin-top: -4em;
-      z-index: 2;
-      display: flex;
+    border: 4px solid #212529;
+    border-radius: 50%;
+    min-width: 120px;
+    height: 120px;
+    margin-top: -4em;
+    z-index: 2;
+    display: flex;
 
   }
 
-  #info-action{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+  #info-action {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
-  .btn{
-      margin: 5px 5px 0 0;
-  }
+  /* .btn {
+    margin: 5px 5px 0 0;
+  } */
+
+  button {
+    margin-top: 5px;
+    margin-right: 0px;
+   }
 }
