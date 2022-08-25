@@ -3,7 +3,8 @@ import { Experiencia } from 'src/app/model/experiencia';
 import { ExperienciaServiceService } from 'src/app/service/experiencia-service.service';
 import { TokenService, } from 'src/app/service/token.service';
 import { Modal } from 'bootstrap';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 
@@ -16,7 +17,7 @@ export class ExperienceComponent implements OnInit {
   expe:Experiencia[] = [];
   
 
-  constructor(private  experienciaService:ExperienciaServiceService, private tokenService: TokenService){}
+  constructor(private  experienciaService:ExperienciaServiceService, private tokenService: TokenService, public _router: Router, public _location:Location){}
   body:string = '';
   testModal?: Modal | undefined;
   deleteModal?: Modal | undefined;
@@ -51,6 +52,7 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.save(experiencia).subscribe(
       data=>{
         this.cargarExperiencia();
+        this.actualizarComponente();
       }, err =>{
         alert("No se pudo añadir");
       })
@@ -91,6 +93,7 @@ export class ExperienceComponent implements OnInit {
       this.experienciaService.delete(id).subscribe(
         data=>{
           this.cargarExperiencia();
+          this.actualizarComponente();
         }, err=>{
           
       });
@@ -117,10 +120,17 @@ export class ExperienceComponent implements OnInit {
     this.experienciaService.update(id, experienciaEditar).subscribe(
       data =>{
         this.cargarExperiencia();
+        this.actualizarComponente();
       }, err=>{
           alert("La experiencia que desea cargar/editar ya existe.");
       }
     )
+  }
+
+  actualizarComponente():void{
+    this._router.navigateByUrl("/bannerComponent", {skipLocationChange:true}).then(()=>{
+      this._router.navigate([decodeURI(this._location.path())]);
+    });
   }
  
 }

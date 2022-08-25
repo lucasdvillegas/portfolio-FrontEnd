@@ -5,15 +5,15 @@
       </div>
       <div id="info" >
           <div class="info-img comp-flex" >
-            <div class="profile-image" style="background-image: url({{persona.img}});"></div> 
+            <div class="profile-image" style="background-image: url({{persona.img}}); object-fit: cover;"></div> 
             <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
           </div>
           <div class="info-data">
               <div class="personal-info">
                   <h1>{{persona.nombre}} {{persona.apellido}}</h1>
-                  <div class="info-company"><h3>{{persona.titulo}} </h3></div>
+                  <div class="info-company"><h3>{{persona.titulo}}</h3></div>
                   <div id="info-contact">
-                      <span>{{persona.ubicacion}} </span>
+                      <span style="color: #ffffff88;">{{persona.ubicacion}} </span>
                       <span> <a [href]="persona.linLink" *ngIf="isLogged" target="_blank">Informacion de contacto</a></span>
                   </div>
               </div>
@@ -24,7 +24,7 @@
                           <i
                             class="fa-solid fa-briefcase"
                             id="work-logo1"></i>
-                          <h2>Estudio Contable Leon</h2>
+                          <h2>{{expe[0]?.nombreE}}</h2>
                       </a>
                   </li>
                   <li>
@@ -33,7 +33,7 @@
                           <i
                             class="fa-solid fa-graduation-cap"
                             id="work-logo"></i>
-                          <h2>Universidad Nacional del Sur</h2>
+                          <h2>{{edu[0]?.nombreEducacion}}</h2>
                       </a>
                   </li>
               </ul>

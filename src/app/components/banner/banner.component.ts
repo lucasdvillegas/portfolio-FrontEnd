@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { Observable } from 'rxjs';
+import { Educacion } from 'src/app/model/educacion';
 import { Experiencia } from 'src/app/model/experiencia';
 import { persona } from 'src/app/model/persona.model';
+import { EducacionService } from 'src/app/service/educacion.service';
 import { ExperienciaServiceService } from 'src/app/service/experiencia-service.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
-import { ExperienceComponent } from '../experience/experience.component';
+
+
 
 
 @Component({
@@ -18,8 +22,15 @@ export class BannerComponent implements OnInit {
   experiencia:Experiencia;
   
 
-  
-  constructor(private personaService:PersonaService, private tokenService: TokenService) { }
+  dataEdu$:Observable<string>;
+
+  constructor(private personaService:PersonaService, 
+    private tokenService: TokenService, 
+    private  experienciaService:ExperienciaServiceService, 
+    private  educacionService:EducacionService
+  ){}
+
+
   isLogged=false;
   
    /* Variables para el uso de la clase Persona*/ 
@@ -33,7 +44,8 @@ export class BannerComponent implements OnInit {
   linLink:string = '';
 
   ngOnInit(): void {
-    
+    this.cargarExperiencia();
+    this.cargarEducacion();
     this.personaService.getPersona().subscribe(data =>{ this.persona = data;
     })
     if(this.tokenService.getToken()){
@@ -41,8 +53,31 @@ export class BannerComponent implements OnInit {
     }else{
       this.isLogged = false;
     }
-    
   }
+    /* Llamada a la educacion */
+    edu:Educacion[] = [];
+    nombreEducacion:string;
+    cargarEducacion():void{
+      this.educacionService.lista().subscribe(
+      data => {this.edu = data;
+      })
+    }
+
+  /* Llamada a la experiencia laboral */
+  expe:Experiencia[] = [];
+  nombreE:string;
+  cargarExperiencia():void{
+    this.experienciaService.lista().subscribe(
+    data => {this.expe = data;
+    })
+  }
+
+  /* Llamada a la educación */
+
+
+  /* Función para recargar los datos traídos de los componentes edu y exp */
+
+
 
   /* Variables que van al modal */
   body:string = '';

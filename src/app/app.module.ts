@@ -1,4 +1,4 @@
-import { NgModule, ɵgetDirectives } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
@@ -28,8 +28,7 @@ import { interceptorProvider } from './service/interceptor-service';
     SkillsComponent,
     ProjectsComponent,
     HomeComponent,
-    LoginComponent,
-    
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,7 @@ import { interceptorProvider } from './service/interceptor-service';
     ReactiveFormsModule
   ],
   providers: [
-    interceptorProvider
+    interceptorProvider,
   ],
   bootstrap: [AppComponent]
 })
