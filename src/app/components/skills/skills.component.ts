@@ -178,7 +178,6 @@ export class SkillsComponent implements OnInit {
     const nuevaHabilidad = new Habilidad(this.nombreHabilidad, this.progresoHabilidad, this.typeHabilidad);
     this.habilidadService.update(id, nuevaHabilidad).subscribe(
       data => {
-        console.log("Se cargó correctamente");
         this.cargarHabilidad();
       }, err => {
         alert("No puedes cambiar de habilidad, sólo su progreso. Si deseas cambiar de hablidad, deberás crear una nueva.");
