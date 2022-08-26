@@ -31,17 +31,17 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarProyecto();
-    if(this.tokenService.getToken()){
+    if (this.tokenService.getToken()) {
       this.isLogged = true;
-    }else{
+    } else {
       this.isLogged = false;
-      
+
     }
   }
 
-  cargarProyecto():void{
+  cargarProyecto(): void {
     this.proyectoService.lista().subscribe(
-      data=>{
+      data => {
         this.proyec = data;
       }
     )
@@ -50,73 +50,85 @@ export class ProjectsComponent implements OnInit {
   //abre modal para cargar un nuevo proyecto
   open() {
     var el_testModal = document.getElementById('proyModal');
-    if (el_testModal ) {
-      this.testModal= new Modal(el_testModal , {
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
         keyboard: false
       });
     }
     this.testModal?.show();
   }
   //confirma modal para guardar proyecto
-  save(){
+  save() {
     this.testModal.toggle();
     const proyecto = new Proyecto(this.nombreProyecto, this.descripcionProyecto, this.imagenProyecto, this.linkProyecto);
     this.proyectoService.save(proyecto).subscribe(
-      data=>{
+      data => {
         this.cargarProyecto();
-      }, err =>{
-        alert("No se pudo añadir");
+      }, err => {
+        this.error();
       })
   }
 
   // ************************ Modal para BORRAR con el modal y su respectivo botón **************
-  openDelete(id?:number) {
-    this.valorProyecto=id;
+  openDelete(id?: number) {
+    this.valorProyecto = id;
     var el_testModal = document.getElementById('deleteProModal');
-    var button =document.createElement('button');
-    if (el_testModal ) {
-      this.testModal= new Modal(el_testModal , {
+    var button = document.createElement('button');
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
         keyboard: false
       });
     }
     this.testModal?.show();
   }
 
-  delete(id?:number){
-    if(id != undefined){
+  delete(id?: number) {
+    if (id != undefined) {
       this.proyectoService.delete(id).subscribe(
-        data=>{
+        data => {
           this.cargarProyecto();
-        }, err=>{
-          
-      });
+        }, err => {
+
+        });
     }
     this.cargarProyecto();
   }
 
-      //**********************Métodos para EDITAR con el modal y su botón respectivo ***********************
-      openEdit(id?:number) {
-        this.valorProyecto=id;
-        var el_testModal = document.getElementById('editProModal');
-        var button =document.createElement('button');
-        if (el_testModal ) {
-          this.testModal= new Modal(el_testModal , {
-            keyboard: false
-          });
-        }
-        this.testModal?.show();
-         
+  //**********************Métodos para EDITAR con el modal y su botón respectivo ***********************
+  openEdit(id?: number) {
+    this.valorProyecto = id;
+    var el_testModal = document.getElementById('editProModal');
+    var button = document.createElement('button');
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
+
+  }
+
+  update(id?: number) {
+    const educacionEditar = new Proyecto(this.nombreProyecto, this.descripcionProyecto, this.imagenProyecto, this.linkProyecto);
+    this.proyectoService.update(id, educacionEditar).subscribe(
+      data => {
+        this.cargarProyecto();
+      }, err => {
+        this.error();
       }
-    
-      update(id?:number){
-        const educacionEditar = new Proyecto(this.nombreProyecto, this.descripcionProyecto, this.imagenProyecto, this.linkProyecto);
-        this.proyectoService.update(id, educacionEditar).subscribe(
-          data =>{
-            this.cargarProyecto();
-          }, err=>{
-              alert("El proyecto que desea cargar/editar ya existe.");
-          }
-        )
-        
+    )
+
+  }
+
+    /* Modal para errores */
+    error():void{
+      var el_testModal = document.getElementById('errorProyectoModal');
+      var button =document.createElement('button');
+      if (el_testModal ) {
+        this.testModal= new Modal(el_testModal , {
+          keyboard: false
+        });
       }
+      this.testModal?.show();
+    }
 }

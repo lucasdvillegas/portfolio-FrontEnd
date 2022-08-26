@@ -18,58 +18,61 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  persona:persona = new persona("", "", "", "", "", "", "", "");
-  experiencia:Experiencia;
-  
-
-  dataEdu$:Observable<string>;
-
-  constructor(private personaService:PersonaService, 
-    private tokenService: TokenService, 
-    private  experienciaService:ExperienciaServiceService, 
-    private  educacionService:EducacionService
-  ){}
+  persona: persona = new persona("", "", "", "", "", "", "", "");
+  experiencia: Experiencia;
 
 
-  isLogged=false;
-  
-   /* Variables para el uso de la clase Persona*/ 
-  nombre:string = '';
-  apellido:string= '';
-  img:string= '';
-  imgBack:string = '';
-  titulo:string = '';
-  ubicacion:string = '';
-  gitLink:string = '';
-  linLink:string = '';
+  dataEdu$: Observable<string>;
+
+  constructor(private personaService: PersonaService,
+    private tokenService: TokenService,
+    private experienciaService: ExperienciaServiceService,
+    private educacionService: EducacionService
+  ) { }
+
+
+  isLogged = false;
+
+  /* Variables para el uso de la clase Persona*/
+  nombre: string = '';
+  apellido: string = '';
+  img: string = '';
+  imgBack: string = '';
+  titulo: string = '';
+  ubicacion: string = '';
+  gitLink: string = '';
+  linLink: string = '';
 
   ngOnInit(): void {
     this.cargarExperiencia();
     this.cargarEducacion();
-    this.personaService.getPersona().subscribe(data =>{ this.persona = data;
+    this.personaService.getPersona().subscribe(data => {
+      this.persona = data;
     })
-    if(this.tokenService.getToken()){
+    if (this.tokenService.getToken()) {
       this.isLogged = true;
-    }else{
+    } else {
       this.isLogged = false;
     }
   }
-    /* Llamada a la educacion */
-    edu:Educacion[] = [];
-    nombreEducacion:string;
-    cargarEducacion():void{
-      this.educacionService.lista().subscribe(
-      data => {this.edu = data;
+  /* Llamada a la educacion */
+  edu: Educacion[] = [];
+  nombreEducacion: string;
+  cargarEducacion(): void {
+    this.educacionService.lista().subscribe(
+      data => {
+        this.edu = data;
       })
-    }
+  }
 
   /* Llamada a la experiencia laboral */
-  expe:Experiencia[] = [];
-  nombreE:string;
-  cargarExperiencia():void{
+  expe: Experiencia[] = [];
+  nombreE: string;
+  cargarExperiencia(): void {
     this.experienciaService.lista().subscribe(
-    data => {this.expe = data;
-    })
+      data => {
+        this.expe = data;
+      })
   }
 
   /* Llamada a la educación */
@@ -80,13 +83,40 @@ export class BannerComponent implements OnInit {
 
 
   /* Variables que van al modal */
-  body:string = '';
+  body: string = '';
   testModal?: Modal | undefined;
   deleteModal?: Modal | undefined;
   editModal?: Modal | undefined;
 
   openEdit() {
     var el_testModal = document.getElementById('editPersModal');
+    var button = document.createElement('button');
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
+
+  }
+
+  update() {
+    let id = 1;
+    const personaActualizada = new persona(this.nombre, this.apellido, this.img, this.imgBack, this.titulo, this.ubicacion, this.gitLink, this.linLink);
+    console.log(personaActualizada);
+    this.personaService.update(id, personaActualizada).subscribe(
+      data => {
+        this.personaService.getPersona().subscribe(data => {
+          this.persona = data;
+        });
+      }, err => {
+        this.error();
+      });
+  }
+
+   /* Modal para errores */
+   error():void{
+    var el_testModal = document.getElementById('errorBannerModal');
     var button =document.createElement('button');
     if (el_testModal ) {
       this.testModal= new Modal(el_testModal , {
@@ -94,19 +124,6 @@ export class BannerComponent implements OnInit {
       });
     }
     this.testModal?.show();
-     
   }
 
-  update(){
-    let id = 1;
-    const personaActualizada = new persona(this.nombre, this.apellido, this.img, this.imgBack, this.titulo, this.ubicacion, this.gitLink, this.linLink);
-    console.log(personaActualizada);
-    this.personaService.update(id, personaActualizada).subscribe(
-      data =>{
-        this.personaService.getPersona().subscribe(data =>{ this.persona = data;
-        });
-      }, err=>{
-          alert("No se pudo guardar los datos");
-      });
-  }
 }

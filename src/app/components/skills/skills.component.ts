@@ -98,8 +98,36 @@ export class SkillsComponent implements OnInit {
         this.typeHabilidad = "../assets/icons/typescript.png";
         this.nombreHabilidad = "TypeScript";
         break;
+      case "8":
+        this.typeHabilidad = "../assets/icons/react.png";
+        this.nombreHabilidad = "React";
+        break;
+      case "9":
+        this.typeHabilidad = "../assets/icons/vue.png";
+        this.nombreHabilidad = "Vue";
+        break;
+      case "10":
+        this.typeHabilidad = "../assets/icons/mongodb.png";
+        this.nombreHabilidad = "MongoDB";
+        break;
+      case "11":
+        this.typeHabilidad = "../assets/icons/mysql.png";
+        this.nombreHabilidad = "MySQL";
+        break;
+      case "12":
+        this.typeHabilidad = "../assets/icons/comunicacion.png";
+        this.nombreHabilidad = "Comunicación";
+        break;
+      case "13":
+        this.typeHabilidad = "../assets/icons/gestion-del-tiempo.png";
+        this.nombreHabilidad = "Gestión del tiempo";
+        break;
+      case "14":
+        this.typeHabilidad = "../assets/icons/trabajo-en-equipo.png";
+        this.nombreHabilidad = "Trabajo en equipo";
+        break;
+
       default:
-        alert("Selecciona una habilidad");
         break;
     }
   }
@@ -109,13 +137,13 @@ export class SkillsComponent implements OnInit {
   submit() {
     //toma el valor de la lista desplegable 
     var valorSeleccionado = (<HTMLInputElement>document.getElementById("skillOption")).value;
-  
+
     //envia el valor a la funcion switch para setear los cambios 
     this.seleccionado(valorSeleccionado); //Muestra la id o el valor de la habilidad seleccionada
-    
+
     //obtenemos el valor del progreso y lo convertimos a integer
     this.progresoHabilidad = parseInt((<HTMLInputElement>document.getElementById("progresoVar")).value);
-  
+
 
 
     const nuevaHabilidad = new Habilidad(this.nombreHabilidad, this.progresoHabilidad, this.typeHabilidad);
@@ -124,7 +152,7 @@ export class SkillsComponent implements OnInit {
         console.log("Se cargó correctamente");
         this.cargarHabilidad();
       }, err => {
-        alert("No puede seleccionar la misma habilidad más de una vez");
+        this.error();
       }
     )
   }
@@ -153,24 +181,24 @@ export class SkillsComponent implements OnInit {
     this.cargarHabilidad();
   }
 
-  openEdit(id?:number) {
-    this.valorHabilidad=id;
+  openEdit(id?: number) {
+    this.valorHabilidad = id;
     var el_testModal = document.getElementById('skillEditModal');
-    var button =document.createElement('button');
-    if (el_testModal ) {
-      this.testModal= new Modal(el_testModal , {
+    var button = document.createElement('button');
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
         keyboard: false
       });
     }
     this.testModal?.show();
   }
 
-  update(id?:number){
+  update(id?: number) {
     //toma el valor de la lista desplegable 
     var valorSeleccionado = (<HTMLInputElement>document.getElementById("skillEditOption")).value;
-  
+
     //envia el valor a la funcion switch para setear los cambios 
-    this.seleccionado(valorSeleccionado); 
+    this.seleccionado(valorSeleccionado);
 
     //obtenemos el valor del progreso y lo convertimos a integer
     this.progresoHabilidad = parseInt((<HTMLInputElement>document.getElementById("editProgreso")).value);
@@ -180,9 +208,21 @@ export class SkillsComponent implements OnInit {
       data => {
         this.cargarHabilidad();
       }, err => {
-        alert("No puedes cambiar de habilidad, sólo su progreso. Si deseas cambiar de hablidad, deberás crear una nueva.");
+        this.error();
       }
     )
+  }
+
+  /* Modal para errores */
+  error(): void {
+    var el_testModal = document.getElementById('errorSkillModal');
+    var button = document.createElement('button');
+    if (el_testModal) {
+      this.testModal = new Modal(el_testModal, {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
   }
 
 }

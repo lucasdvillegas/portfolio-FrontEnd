@@ -1,59 +1,47 @@
 <section>
   <div class="card mat-card" id="first-card">
-      <div id="profile-background" >
-        <img alt="" [src]="persona.imgBack" class="profile-img-container">
+    <div id="profile-background">
+      <img alt="" [src]="persona.imgBack" class="profile-img-container">
+    </div>
+    <div id="info">
+      <div class="info-img comp-flex">
+        <div class="profile-image" style="background-image: url({{persona.img}}); object-fit: cover;"></div>
+        <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div id="info" >
-          <div class="info-img comp-flex" >
-            <div class="profile-image" style="background-image: url({{persona.img}}); object-fit: cover;"></div> 
-            <button *ngIf="isLogged" class="btn-nondeco" (click)="openEdit()"><i class="fa-solid fa-pencil"></i></button>
+      <div class="info-data">
+        <div class="personal-info">
+          <h1>{{persona.nombre}} {{persona.apellido}}</h1>
+          <div class="info-company">
+            <h3>{{persona.titulo}}</h3>
           </div>
-          <div class="info-data">
-              <div class="personal-info">
-                  <h1>{{persona.nombre}} {{persona.apellido}}</h1>
-                  <div class="info-company"><h3>{{persona.titulo}}</h3></div>
-                  <div id="info-contact">
-                      <span style="color: #ffffff88;">{{persona.ubicacion}} </span>
-                      <span> <a [href]="persona.linLink" *ngIf="isLogged" target="_blank">Informacion de contacto</a></span>
-                  </div>
-              </div>
-              <ul id="info-details">
-                  <li>
-                      <a href="#"
-                          class="link">
-                          <i
-                            class="fa-solid fa-briefcase"
-                            id="work-logo1"></i>
-                          <h2>{{expe[0]?.nombreE}}</h2>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#"
-                         class="link">
-                          <i
-                            class="fa-solid fa-graduation-cap"
-                            id="work-logo"></i>
-                          <h2>{{edu[0]?.nombreEducacion}}</h2>
-                      </a>
-                  </li>
-              </ul>
+          <div id="info-contact">
+            <span style="color: #ffffff88;">{{persona.ubicacion}} </span>
+            <span> <a [href]="persona.linLink" *ngIf="isLogged" target="_blank">Informacion de contacto</a></span>
+          </div>
+        </div>
+        <ul id="info-details">
+          <li>
+            <a href="#" class="link">
+              <i class="fa-solid fa-briefcase" id="work-logo1"></i>
+              <h2>{{expe[0]?.nombreE}}</h2>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="link">
+              <i class="fa-solid fa-graduation-cap" id="work-logo"></i>
+              <h2>{{edu[0]?.nombreEducacion}}</h2>
+            </a>
+          </li>
+        </ul>
 
-          </div>
-          <div id="info-action">
-              <button
-                *ngIf="isLogged"
-                type="button"
-                class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Tengo interés en</button>
-              <button
-                *ngIf="isLogged"
-                type="button"
-                class="btn btn-light">Añadir Sección</button>
-              <button
-                *ngIf="isLogged"
-                type="button"
-                class="btn btn-light">Más</button>
-          </div>
       </div>
+      <div id="info-action">
+        <button *ngIf="isLogged" type="button" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#myModal">Tengo interés en</button>
+        <button *ngIf="isLogged" type="button" class="btn btn-light">Añadir Sección</button>
+        <button *ngIf="isLogged" type="button" class="btn btn-light">Más</button>
+      </div>
+    </div>
   </div>
 
 </section>
@@ -72,52 +60,52 @@
         <form #addForm novalidate #f="ngForm">
 
           <div class="form-group">
-            <label for="Nombre" style="color: #FFFFFFE6">Nombre</label>
-            <input type="text" ngModel name="Nombre" class="form-control" id="Nombre"
-              placeholder="Nombre" required maxlength="32" [(ngModel)]="nombre">
+            <label for="Nombre" style="color: #FFFFFFE6">Nombre*</label>
+            <input type="text" ngModel name="Nombre" class="form-control" id="Nombre" placeholder="Nombre" required
+              maxlength="32" [(ngModel)]="nombre">
           </div>
 
           <div class="form-group">
-            <label for="Apellido" style="color: #FFFFFFE6">Apellido</label>
-            <input type="text" ngModel name="Apellido" class="form-control" id="Apellido"
-              placeholder="Apellido" required  maxlength="32" [(ngModel)]="apellido">
+            <label for="Apellido" style="color: #FFFFFFE6">Apellido*</label>
+            <input type="text" ngModel name="Apellido" class="form-control" id="Apellido" placeholder="Apellido"
+              required maxlength="32" [(ngModel)]="apellido">
           </div>
 
           <div class="form-group">
-            <label for="img" style="color: #FFFFFFE6">Url de la imagen</label>
-            <input type="text" ngModel name="img" class="form-control" id="img"
-              placeholder="miperfil.com.." required  maxlength="200" [(ngModel)]="img"> 
+            <label for="img" style="color: #FFFFFFE6">Url de la imagen*</label>
+            <input type="text" ngModel name="img" class="form-control" id="img" placeholder="miperfil.com.." required
+              maxlength="200" [(ngModel)]="img">
           </div>
 
           <div class="form-group">
-            <label for="imgBack" style="color: #FFFFFFE6">Url de la portada</label>
-            <input type="text" ngModel name="imgBack" class="form-control" id="imgBack"
-              placeholder="miportada.com.." required  maxlength="200" [(ngModel)]="imgBack">
-          </div> 
+            <label for="imgBack" style="color: #FFFFFFE6">Url de la portada*</label>
+            <input type="text" ngModel name="imgBack" class="form-control" id="imgBack" placeholder="miportada.com.."
+              required maxlength="200" [(ngModel)]="imgBack">
+          </div>
 
           <div class="form-group">
-            <label for="titulo" style="color: #FFFFFFE6">Titular</label>
+            <label for="titulo" style="color: #FFFFFFE6">Titular*</label>
             <input type="text" ngModel name="titulo" class="form-control" id="titulo"
-              placeholder="Desarrollador fullstack Jr" required  maxlength="25" [(ngModel)]="titulo">
-          </div> 
+              placeholder="Desarrollador fullstack Jr" required maxlength="25" [(ngModel)]="titulo">
+          </div>
 
           <div class="form-group">
-            <label for="ubicacion" style="color: #FFFFFFE6">Ubicacion</label>
+            <label for="ubicacion" style="color: #FFFFFFE6">Ubicacion*</label>
             <input type="text" ngModel name="ubicacion" class="form-control" id="ubicacion"
-              placeholder="Buenos Aires, Argentina" required  maxlength="25" [(ngModel)]="ubicacion">
-          </div> 
+              placeholder="Buenos Aires, Argentina" required maxlength="25" [(ngModel)]="ubicacion">
+          </div>
 
           <div class="form-group">
-            <label for="gitLink" style="color: #FFFFFFE6">Perfil de GitHub</label>
+            <label for="gitLink" style="color: #FFFFFFE6">Perfil de GitHub*</label>
             <input type="text" ngModel name="gitLink" class="form-control" id="gitLink"
-              placeholder="https://github.com/mirepositorio" required  maxlength="200" [(ngModel)]="gitLink">
-          </div> 
+              placeholder="https://github.com/mirepositorio" required maxlength="200" [(ngModel)]="gitLink">
+          </div>
 
           <div class="form-group">
-            <label for="linLink" style="color: #FFFFFFE6">Perfil de LinkedIn</label>
+            <label for="linLink" style="color: #FFFFFFE6">Perfil de LinkedIn*</label>
             <input type="text" ngModel name="linLink" class="form-control" id="linLink"
-              placeholder="https://www.linkedin.com/in/miperfil" required  maxlength="200" [(ngModel)]="linLink">
-          </div> 
+              placeholder="https://www.linkedin.com/in/miperfil" required maxlength="200" [(ngModel)]="linLink">
+          </div>
 
 
         </form>
@@ -130,3 +118,25 @@
   </div>
 </div>
 <!-- Modal editar -->
+
+<!--Modal error-->
+<div class="modal fade" tabindex="-1" #errorBannerModal id="errorBannerModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: white">Error</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">No se ha podido guardar la información.</h6>
+        <br>
+        <h6 style="color: rgb(225, 225, 225)"><i>Puede que no haya ingresado los datos obligatorios* requeridos o haya superado el límite permitido de carácteres (200)</i></h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          data-bs-dismiss="modal">Confimar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal error-->

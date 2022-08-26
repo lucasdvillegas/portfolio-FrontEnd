@@ -1,37 +1,40 @@
-  <div class="mat-card" id="third-card">
-    <div class="comp-flex">
-      <h3>
-        Proyectos
-      </h3>
-      <button *ngIf="isLogged" #modalButton type="button" class="btn-nondeco" (click)="open()">
-        <i class="fa-solid fa-plus"></i>
-      </button>
-    </div>
+<div class="mat-card" id="third-card">
+  <div class="comp-flex">
+    <h3>
+      Proyectos
+    </h3>
+    <button *ngIf="isLogged" #modalButton type="button" class="btn-nondeco" (click)="open()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
 
-    <div class="projects-box">
+  <div class="projects-box">
 
-      <ul class="item-list">
-        <li *ngFor="let Proyecto of proyec">
+    <ul class="item-list">
+      <li *ngFor="let Proyecto of proyec">
 
-          <div class="card" style="margin: 0 5px;">
-            <a [href]="Proyecto.linkProyecto" target="_blank" class="img-container"><img [src]="Proyecto.imagenProyecto" class="card-img-top" alt="..."></a>
+        <div class="card" style="margin: 0 5px;">
+          <a [href]="Proyecto.linkProyecto" target="_blank" class="img-container"><img [src]="Proyecto.imagenProyecto"
+              class="card-img-top" alt="..."></a>
 
-            <div class="card-body">
-              <h5 class="card-title">{{Proyecto.nombreProyecto}}</h5>
-              <p class="card-text">{{Proyecto.descripcionProyecto}}</p>
-            </div>
-
-            <div class="card-footer">
-              <button *ngIf="isLogged" class="btn-nodeco edit-button" (click)="openEdit(Proyecto.id)"><i class="fa-solid fa-pencil"></i></button>
-              <button *ngIf="isLogged" class="btn-nodeco trash-button" (click)="openDelete(Proyecto.id)"><i class="fa-solid fa-trash"></i></button>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">{{Proyecto.nombreProyecto}}</h5>
+            <p class="card-text">{{Proyecto.descripcionProyecto}}</p>
           </div>
 
-        </li>
-      </ul>
-    </div>
+          <div class="card-footer">
+            <button *ngIf="isLogged" class="btn-nodeco edit-button" (click)="openEdit(Proyecto.id)"><i
+                class="fa-solid fa-pencil"></i></button>
+            <button *ngIf="isLogged" class="btn-nodeco trash-button" (click)="openDelete(Proyecto.id)"><i
+                class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
 
+      </li>
+    </ul>
   </div>
+
+</div>
 
 
 <!-- Modal agregar -->
@@ -136,10 +139,33 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update(valorProyecto)">Confimar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="update(valorProyecto)">Confimar</button>
         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
 <!-- Modal editar -->
+
+<!--Modal error-->
+<div class="modal fade" tabindex="-1" #errorProyectoModal id="errorProyectoModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: white">Error</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">No se ha podido guardar el proyecto.</h6>
+        <br>
+        <h6 style="color: rgb(225, 225, 225)"><i>Puede que el nombre del proyecto esté repetido o no lo haya ingresado.</i></h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          data-bs-dismiss="modal">Confimar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal error-->

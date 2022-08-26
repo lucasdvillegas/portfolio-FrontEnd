@@ -54,7 +54,7 @@ export class ExperienceComponent implements OnInit {
         this.cargarExperiencia();
         this.actualizarComponente();
       }, err =>{
-        alert("No se pudo añadir");
+        this.error();
       })
   }
 
@@ -122,9 +122,21 @@ export class ExperienceComponent implements OnInit {
         this.cargarExperiencia();
         this.actualizarComponente();
       }, err=>{
-          alert("La experiencia que desea cargar/editar ya existe.");
+        this.error();
       }
     )
+  }
+
+  /* Modal para errores */
+  error():void{
+    var el_testModal = document.getElementById('errorModal');
+    var button =document.createElement('button');
+    if (el_testModal ) {
+      this.testModal= new Modal(el_testModal , {
+        keyboard: false
+      });
+    }
+    this.testModal?.show();
   }
 
   actualizarComponente():void{
@@ -132,5 +144,7 @@ export class ExperienceComponent implements OnInit {
       this._router.navigate([decodeURI(this._location.path())]);
     });
   }
+
+
  
 }

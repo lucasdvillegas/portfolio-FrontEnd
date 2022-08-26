@@ -50,6 +50,13 @@
             <option value="5">Java</option>
             <option value="6">Spring</option>
             <option value="7">TypeScript</option>
+            <option value="8">React</option>
+            <option value="9">Vue</option>
+            <option value="10">MongoDB</option>
+            <option value="11">MySQL</option>
+            <option value="12">Comunicación</option>
+            <option value="13">Gestión del tiempo</option>
+            <option value="14">Trabajo en equipo</option>
           </select>
 
           <div class="form-group">
@@ -101,7 +108,7 @@
       <div class="modal-body">
         <form #addForm novalidate >
 
-          <select class="form-select" aria-label="Default select example" id="skillEditOption" > 
+          <select class="form-select" id="skillEditOption" > 
             <option selected disabled>Selecciona la habilidad</option>
             <option value="0">HTML</option>
             <option value="1">CSS</option>
@@ -111,6 +118,10 @@
             <option value="5">Java</option>
             <option value="6">Spring</option>
             <option value="7">TypeScript</option>
+            <option value="8">Comunicación</option>
+            <option value="8">Comunicación</option>
+            <option value="8">Comunicación</option>
+            <option value="8">Comunicación</option>
           </select>
 
           <div class="form-group">
@@ -128,3 +139,25 @@
   </div>
 </div>
 <!-- Modal editar -->
+
+<!--Modal error-->
+<div class="modal fade" tabindex="-1" #errorSkillModal id="errorSkillModal">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: white">Error</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: white">No se ha podido guardar la habilidad.</h6>
+        <br>
+        <h6 style="color: rgb(225, 225, 225)"><i>Puede que haya seleccionado una habilidad ya existente o no la haya ingresado.</i></h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          data-bs-dismiss="modal">Confimar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal error-->

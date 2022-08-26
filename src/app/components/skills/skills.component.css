@@ -117,6 +117,10 @@ li{
   margin: 0px 5%;
 }
 
+.form-container{
+  max-width: 450px;
+  max-height: 700px;
+}
 
 @media screen and (max-width: 629px){
   .box-bars {
