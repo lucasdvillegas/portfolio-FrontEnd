@@ -83,6 +83,7 @@ p {
   height: 150px;
   border-radius: 5px;
   object-fit: cover;
+  padding: 0 7px;
 }
 
 .card-title{

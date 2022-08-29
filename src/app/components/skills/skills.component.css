@@ -122,6 +122,7 @@ li{
   max-height: 700px;
 }
 
+
 @media screen and (max-width: 629px){
   .box-bars {
     flex-direction: column;
