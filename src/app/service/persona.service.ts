@@ -7,7 +7,7 @@ import { persona } from '../model/persona.model';
   providedIn: 'root'
 })
 export class PersonaService {
-  Url = 'http://localhost:8080/personas/';
+  Url = 'https://argprograma-backendldv.fly.dev/personas/';
 
   constructor(private http: HttpClient) { }
 

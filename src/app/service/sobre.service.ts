@@ -7,7 +7,7 @@ import { Sobre } from '../model/sobre';
   providedIn: 'root'
 })
 export class SobreService {
-  sobreUrl = "http://localhost:8080/sobre/";
+  sobreUrl = "https://argprograma-backendldv.fly.dev/sobre/";
   
   constructor(private httpClient:HttpClient) { }
 

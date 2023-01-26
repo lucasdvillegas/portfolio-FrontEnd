@@ -9,7 +9,7 @@ import { NewUser } from '../model/new-user';
   providedIn: 'root'
 })
 export class AuthService {
-  authUrl = 'http://localhost:8080/auth/';
+  authUrl = 'https://argprograma-backendldv.fly.dev/auth/';
 
   constructor(private httpClient: HttpClient) { }
 

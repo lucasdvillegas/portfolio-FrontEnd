@@ -7,7 +7,7 @@ import { Habilidad } from '../model/habilidad';
   providedIn: 'root'
 })
 export class HabilidadService {
-  urlHabilidad = 'http://localhost:8080/habilidad/';
+  urlHabilidad = 'https://argprograma-backendldv.fly.dev/habilidad/';
 
   constructor(private httpClient:HttpClient) { }
 

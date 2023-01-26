@@ -7,7 +7,7 @@ import { Proyecto } from '../model/proyecto';
   providedIn: 'root'
 })
 export class ProyectoService {
-  urlProyecto = 'http://localhost:8080/proyecto/';
+  urlProyecto = 'https://argprograma-backendldv.fly.dev/proyecto/';
 
   constructor(private httpClient:HttpClient) { }
 
